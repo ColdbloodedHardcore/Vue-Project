@@ -1,13 +1,15 @@
 <template>
-  <div id="shop">
-    <div class="container">
-      <site-header/>   
-      <post :posts="posts"
-      />
-      <single-page/>
-      <cart/>
-      <site-footer/>
-    </div>    
+  <div id="shop">   
+    <site-header
+    />  
+
+    <hero/>   
+    <post :posts="posts"
+    />
+
+    <single-page/>
+    <cart/>
+    <site-footer/>
   </div>
 </template>
 
@@ -19,62 +21,66 @@
         state: 'home',
         posts: [
           {
-            src: require ('./assets/images/Bitter Taste - Leave Me Broken (EP) (2019).jpg'),
-            title: 'Bitter Taste - Leave Me Broken (EP) (2019)',
-            description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi sed beatae molestiae, illo assumenda, illum optio omnis iste voluptas amet, dolorum dicta!',
-            genre: 'Metallic Hardcore',
-            price: 14.99
+            src: require ('./assets/images/products/product_1.jpg'),
+            title: 'SmartPhone',            
+            price: 670
           },
           {
-            src: require ('./assets/images/Brothers Till We Die - The Thin Line Between Death And Immortality (2017).jpg'),
-            title: 'Brothers Till We Die - Line Between Death And Immortality (2017)',
-            description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi sed beatae molestiae, illo assumenda, illum optio omnis iste voluptas amet, dolorum dicta!',
-            genre: 'Hardcore',
-            price: 14.99
+            src: require ('./assets/images/products/product_2.jpg'),
+            title: 'Speakers',            
+            price: 520
           },
           {
-            src: require ('./assets/images/Dead Kennedys - Give Me Convenience or Give Me Death (Remastered) (2001).jpg'),
-            title: 'Dead Kennedys - Convenience or Give Me Death (2001)',
-            description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi sed beatae molestiae, illo assumenda, illum optio omnis iste voluptas amet, dolorum dicta!',
-            genre: 'Hardcore Punk',
-            price: 14.99
+            src: require ('./assets/images/products/product_3.jpg'),
+            title: 'Accessories',            
+            price: 710
           },
           {
-            src: require ('./assets/images/Hollowed Out - Life Among the Lifeless (2017).jpg'),
-            title: 'Hollowed Out - Life Among the Lifeless (2017)',
-            description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi sed beatae molestiae, illo assumenda, illum optio omnis iste voluptas amet, dolorum dicta!',
-            genre: 'Beatdown Hardcore',
-            price: 14.99
+            src: require ('./assets/images/products/product_4.jpg'),
+            title: 'Laptop',            
+            price: 330
           },
           {
-            src: require ('./assets/images/Misantropic - Insomnia (2010).jpg'),
-            title: 'Misantropic - Insomnia (2010)',
-            description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi sed beatae molestiae, illo assumenda, illum optio omnis iste voluptas amet, dolorum dicta!',
-            genre: 'Crust, D Beat',
-            price: 14.99
+            src: require ('./assets/images/products/product_5.jpg'),
+            title: 'Headphones',            
+            price: 170
           },
           {
-            src: require ('./assets/images/Spawn Of Disgust -  No Warning Shots (EP) (2016).jpg'),
-            title: 'Spawn Of Disgust -  No Warning Shots (EP) (2016)',
-            description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi sed beatae molestiae, illo assumenda, illum optio omnis iste voluptas amet, dolorum dicta!',
-            genre: 'Beatdown Hardcore',
-            price: 14.99
+            src: require ('./assets/images/products/product_6.jpg'),
+            title: 'Tablet',            
+            price: 240
           },
           {
-            src: require ('./assets/images/Brothers Till We Die - We Will Never Grow Up (2014).jpg'),
-            title: 'Brothers Till We Die - We Will Never Grow Up (2014)',
-            description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi sed beatae molestiae, illo assumenda, illum optio omnis iste voluptas amet, dolorum dicta!',
-            genre: 'Hardcore',
-            price: 14.99
+            src: require ('./assets/images/products/product_7.jpg'),
+            title: 'SmartPhone',            
+            price: 70
           },
           {
-            src: require ('./assets/images/The Warriors - Monomyth (2019).jpg'),
-            title: 'The Warriors - Monomyth (2019)',
-            description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi sed beatae molestiae, illo assumenda, illum optio omnis iste voluptas amet, dolorum dicta!',
-            genre: 'Hardcore',
-            price: 0
+            src: require ('./assets/images/products/product_8.jpg'),
+            title: 'Keyboard',            
+            price: 490
+          },
+          {
+            src: require ('./assets/images/products/product_9.jpg'),
+            title: 'Drone',            
+            price: 410
+          },
+          {
+            src: require ('./assets/images/products/product_10.jpg'),
+            title: 'Headphones',            
+            price: 365
+          },
+          {
+            src: require ('./assets/images/products/product_11.jpg'),
+            title: 'PlayStation',            
+            price: 195
+          },
+          {
+            src: require ('./assets/images/products/product_12.jpg'),
+            title: 'Photo Camera',            
+            price: 580
           }
-        ]
+        ]      
       }
     }
   }

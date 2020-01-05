@@ -1,24 +1,26 @@
 <template>
-    <div class="row">
-        <div class="col-lg-3 col-md-3 col-3 post" 
-            v-for="post in posts">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-3" 
+                v-for="post in posts"
+                :key="post.id"
+                >
 
-            <div class="card">
-                <img :src="post.src" class="card-img-top" alt="1">
+                <div class="product">
+                    <div class="product_image">
+                        <img :src="post.src">
+                    </div>                    
 
-                <div class="card-body">
-                    <h5 class="card-title" :title="post.title">{{ post.title }}</h5>
-                    <p class="card-text">{{ post.description }}</p>
-                    <span class="text-success">{{ post.genre }}</span>
-
-                    <div class="card-price">
-                        <span class="text-danger">{{ post.price }}$</span>
-                        <button class="btn btn-dark">Add To Cart</button>
-                    </div>                   
+                    <div class="product_content">
+                        <div class="product_title">
+                            <a href="#">{{ post.title }}</a>
+                        </div>
+                        <div class="product_price">{{ post.price }}$</div>                                         
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
 </template>
 
 <script>
@@ -32,33 +34,48 @@
     }
 </script>
 
-<style scoped lang="scss">    
-    .post {
-        padding: 15px;   
+<style scoped lang="scss">   
+    .product {
+        margin-bottom: 60px;
 
-        .card {
-        box-shadow:0px 5px 8px 0px rgba(0,0,0,0.5);
-        -webkit-box-shadow:0px 5px 8px 0px rgba(0,0,0,0.5);
-        -moz-box-shadow:0px 5px 8px 0px rgba(0,0,0,0.5);
+        &_image {
+            width: 100%;
 
-            &-title {
-            height: 55px;
-            font-size: 18px;
+            img {
+                max-width: 100%;
+            }
+        }
+
+        &_content {
+            width: 100%;
+            padding-top: 36px;
+            padding-bottom: 38px;
+
+            .product_title {
+                a {
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: #1b1b1b;
+                    line-height: 1.1;
+                    -webkit-transition: all 200ms ease;
+                    -moz-transition: all 200ms ease;
+                    -ms-transition: all 200ms ease;
+                    -o-transition: all 200ms ease;
+                    transition: all 200ms ease;
+
+                    &:hover {
+                        color: #e95a5a;
+                    }
+                }
             }
 
-            &-text {
-            font-size: 14px;
-            }    
-
-            &-price {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-            
-                .btn {
-                    border-radius: 4px;
-                } 
+            .product_price {
+                font-size: 16px;
+                font-weight: 500;
+                color: #6c6a74;
+                line-height: 0.75;
+                margin-top: 13px;
             }
-        }     
-    } 
+        }
+    }    
 </style>
