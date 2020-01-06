@@ -1,14 +1,12 @@
 <template>
   <div id="shop">   
-    <site-header
+    <site-header :navList="navList"
     />  
 
     <hero/>   
     <post :posts="posts"
     />
 
-    <single-page/>
-    <cart/>
     <site-footer/>
   </div>
 </template>
@@ -19,6 +17,35 @@
     data() {
       return {
         state: 'home',
+        navList: [
+        { url: "javascript:void(0)", name: "Home"},
+        { url: "javascript:void(0)", name: "Categories",
+        children: [
+            {
+              url: "#",
+              name: "Category"
+            },
+            {
+              url: "#",
+              name: "Category"
+            },
+            {
+              url: "#",
+              name: "Category"
+            },
+            {
+              url: "#",
+              name: "Category"
+            },
+            {
+              url: "#",
+              name: "Category"
+            }
+          ]},
+        { url: "#", name: "Accessories" },
+        { url: "#", name: "Offers" },
+        { url: "#", name: "Contact" }
+        ],
         posts: [
           {
             src: require ('./assets/images/products/product_1.jpg'),

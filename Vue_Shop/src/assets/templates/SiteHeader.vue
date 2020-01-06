@@ -10,44 +10,28 @@
 
                         <nav class="main_nav">
                             <ul>
-                                <li class="hassubs">
-                                    <a href="index.html">Home<i class="fas fa-chevron-down"></i></a>
-                                    
-                                    <!-- <ul>
-                                        <li>
-                                            <a href="categories.html">Categories</a>
-                                        </li>
-                                        <li>
-                                            <a href="product.html">Product</a>
-                                        </li>
-                                        <li>
-                                            <a href="cart.html">Cart</a>
-                                        </li>
-                                        <li>
-                                            <a href="checkout.html">Check out</a>
-                                        </li>
-                                        <li>
-                                            <a href="contact.html">Contact</a>
-                                        </li>
-                                    </ul> -->
+                               <li v-for="item in navList">
+                                    <template v-if="item.children">
+                                        <a 
+                                        :href="item.url" 
+                                        :title="item.name" 
+                                        @click="dropShow()" 
+                                        >{{ item.name }}<i class="fas fa-chevron-down"></i></a>
+                                        <div :class="{ showDropdown }" class="dropdown" v-show="showDropdown">
+                                            <ul>
+                                                <li v-for="{ url, name } in item.children">
+                                                    <a :href="url" :title="name" @click="itemClicked(item)">{{ name }}</a>
+                                                </li>
+                                            </ul>
+                                        </div>    
+                                    </template>
+                                    <template v-else>
+                                        <a 
+                                        :href="item.url" 
+                                        :title="item.name">{{ item.name }}</a>
+                                    </template>
                                 </li>
-
-                                <li class="hassubs">
-                                    <a href="categories.html">Categories<i class="fas fa-chevron-down"></i></a>
-                                    
-                                    <!-- <ul>
-                                        <li><a href="categories.html">Category</a></li>
-                                        <li><a href="categories.html">Category</a></li>
-                                        <li><a href="categories.html">Category</a></li>
-                                        <li><a href="categories.html">Category</a></li>
-                                        <li><a href="categories.html">Category</a></li>
-                                    </ul> -->
-                                </li>
-
-                                <li><a href="#">Accessories</a></li>
-                                <li><a href="#">Offers</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
+                            </ul>                            
                         </nav>
 
                         <div class="ml-auto">
@@ -112,10 +96,12 @@
 </template>
 
 <script>
-    export default {       
+    export default {     
+        props: ['navList'],  
         data () {
             return {
                 showSearch: false,
+                showDropdown: false,
                 scrolled: {
                     limitPosition: 100,
                     height: 130,
@@ -125,19 +111,26 @@
         },
         methods: {
             handleScroll() {
-            if (this.scrolled.lastPosition < window.scrollY && this.scrolled.limitPosition < window.scrollY) {
-                this.scrolled.height = 70 + 'px';                
-                // move up!
-            } 
-            
-            if (this.scrolled.lastPosition > window.scrollY) {
-                this.scrolled.height = 130 + 'px';
-                // move down
-            }
-            
-            this.scrolled.lastPosition = window.scrollY;
-            // this.scrolled = window.scrollY > 250;
-            }
+                if (this.scrolled.lastPosition < window.scrollY && this.scrolled.limitPosition < window.scrollY) {
+                    this.scrolled.height = 70 + 'px';                
+                    // move up!
+                } 
+                
+                if (this.scrolled.lastPosition > window.scrollY) {
+                    this.scrolled.height = 130 + 'px';
+                    // move down
+                }
+                
+                this.scrolled.lastPosition = window.scrollY;
+                // this.scrolled = window.scrollY > 250;
+            },
+            dropShow() {
+                this.showDropdown = !this.showDropdown;
+                this.active = !this.active;
+            },
+            itemClicked(item) {
+                this.dropShow();
+            },
         },
         created() {
             window.addEventListener("scroll", this.handleScroll);
@@ -181,11 +174,10 @@
                     display: inline-block;
                     position: relative;
 
-                    &:hover a, 
-                    &:hover a i {
-                            fill: #e95a5a;
-                            color: #e95a5a;
-                        }
+                    &:hover i{
+                        fill: #e95a5a;
+                        color: #e95a5a;
+                    }
 
                     a {
                         font-size: 16px;
@@ -195,7 +187,12 @@
                         -moz-transition: all 200ms ease;
                         -ms-transition: all 200ms ease;
                         -o-transition: all 200ms ease;
-                        transition: all 200ms ease;                    
+                        transition: all 200ms ease;  
+
+                        &:hover {
+                            fill: #e95a5a;
+                            color: #e95a5a;
+                        }               
 
                         i {
                             position: absolute;
@@ -207,7 +204,7 @@
                             transform: translateY(-50%);
                             left: calc(100% + 3px);
                             font-size: 10px;
-                            color: #767676;
+                            color: #767676; 
                         }                    
                     }
                 }
@@ -216,28 +213,35 @@
                     margin-right: 46px;
                 }
 
-                .hassubs {
-                    ul {
-                        position: absolute;
-                        right: -15px;
-                        top: calc(100% + 20px);
-                        text-align: right;
-                        background: #FFFFFF;
-                        padding-right: 25px;
-                        padding-left: 35px;
-                        padding-top: 25px;
-                        padding-bottom: 25px;
-                        visibility: hidden;
-                        opacity: 0;
-                        -webkit-transition: all 200ms ease;
-                        -moz-transition: all 200ms ease;
-                        -ms-transition: all 200ms ease;
-                        -o-transition: all 200ms ease;
-                        transition: all 200ms ease;
+                .dropdown {
+                    position: absolute;
+                    left: 50%;
+                    transform: translatex(-50%) rotatex(90deg) scale(0);
+                    margin-top: 1.45em;
+                    transform-origin: 0 0;
+                    background: #FFFFFF;
+                    visibility: hidden;
+                    opacity: 0;
+                    transition: all 200ms linear;
+
+                    ul li {
+                        padding: 7px 10px;
+                        margin: 0 16px;
+
+                        a {
+                          &:hover {
+                                color: #e95a5a;
+                            }  
+                        }
+                        
                     }
+
+                    &.showDropdown {
+                        transform: translatex(-50%);
+                        visibility: visible;
+                        opacity: 1;
+                    }      
                 }
-                
-                
             }
 
             .shopping_cart {
@@ -254,7 +258,7 @@
                     display: inline-block;
                     width: 20px;
                     height: 20px;
-                    vertical-align: middle;
+                    vertical-align: sub;
                     -webkit-transition: all 200ms ease;
                     -moz-transition: all 200ms ease;
                     -ms-transition: all 200ms ease;
