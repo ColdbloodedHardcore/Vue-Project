@@ -1,25 +1,27 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-3 col-3" 
-                v-for="post in posts"
-                :key="post.id"
-                >
+    <div class="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-3" 
+                    v-for="post in posts"
+                    :key="post.id"
+                    >
 
-                <div class="product">
-                    <div class="product_image">
-                        <img :src="post.src">
-                    </div>                    
+                    <div class="product">
+                        <div class="product_image">
+                            <img :src="post.src">
+                        </div>                    
 
-                    <div class="product_content">
-                        <div class="product_title">
-                            <a href="#">{{ post.title }}</a>
+                        <div class="product_content">
+                            <div class="product_title">
+                                <a href="#">{{ post.title }}</a>
+                            </div>
+                            <div class="product_price">{{ post.price }}$</div>                                         
                         </div>
-                        <div class="product_price">{{ post.price }}$</div>                                         
                     </div>
                 </div>
             </div>
-        </div>
+        </div>    
     </div>    
 </template>
 
@@ -34,8 +36,13 @@
     }
 </script>
 
-<style scoped lang="scss">   
-    .product {
+<style scoped lang="scss"> 
+    .products {
+        position: relative;
+        z-index: 2;
+        background-color: white;
+
+        .product {
         margin-bottom: 60px;
 
         &_image {
@@ -77,5 +84,6 @@
                 margin-top: 13px;
             }
         }
-    }    
+    }   
+    }     
 </style>
