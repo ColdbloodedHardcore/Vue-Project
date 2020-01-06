@@ -3,9 +3,9 @@
     <site-header :navList="navList"
     />  
 
-    <hero/>   
-    <post :posts="posts"
-    />
+    <home :icons="icons"/>   
+
+    <!-- <products :posts="posts"/> -->
 
     <site-footer/>
   </div>
@@ -107,7 +107,22 @@
             title: 'Photo Camera',            
             price: 580
           }
-        ]      
+        ],
+        icons: [{
+          src: require ('./assets/images/icons/icon_1.svg'),
+          title: 'Free Shipping Worldwide',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.'
+        },
+        {
+          src: require ('./assets/images/icons/icon_2.svg'),
+          title: 'Free Returns',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.'
+        },
+        {
+          src: require ('./assets/images/icons/icon_3.svg'),
+          title: '24h Fast Support',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.'
+        }]      
       }
     }
   }

@@ -177,7 +177,7 @@
                     &:hover i{
                         fill: #e95a5a;
                         color: #e95a5a;
-                    }
+                    }                   
 
                     a {
                         font-size: 16px;
@@ -192,7 +192,7 @@
                         &:hover {
                             fill: #e95a5a;
                             color: #e95a5a;
-                        }               
+                        }   
 
                         i {
                             position: absolute;
@@ -222,7 +222,7 @@
                     background: #FFFFFF;
                     visibility: hidden;
                     opacity: 0;
-                    transition: all 200ms linear;
+                    transition: all 200ms linear;                   
 
                     ul li {
                         padding: 7px 10px;
