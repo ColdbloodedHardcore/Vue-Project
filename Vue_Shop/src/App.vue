@@ -3,9 +3,10 @@
     <site-header :navList="navList"
     />  
 
-    <home :icons="icons"/>   
-
-    <!-- <products :posts="posts"/> -->
+    <home :posts="posts"
+          :images="images"
+          :icons="icons"          
+    />   
 
     <site-footer/>
   </div>
@@ -108,21 +109,40 @@
             price: 580
           }
         ],
-        icons: [{
+        icons: [
+          {
           src: require ('./assets/images/icons/icon_1.svg'),
           title: 'Free Shipping Worldwide',
           text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.'
-        },
-        {
+          },
+          {
           src: require ('./assets/images/icons/icon_2.svg'),
           title: 'Free Returns',
           text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.'
-        },
-        {
+          },
+          {
           src: require ('./assets/images/icons/icon_3.svg'),
           title: '24h Fast Support',
           text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie.'
-        }]      
+          }
+        ], 
+        images: {
+          discount: require ('./assets/images/home/discount.png'),
+          avds_small: require ('./assets/images/home/home_1.jpg'),
+          avds_large: require ('./assets/images/home/home_2.jpg'),
+          avds_xl: require ('./assets/images/home/home_3.jpg')   
+        },
+        slides: [
+          {
+            slide: require ('./assets/images/home/home_slider_1.jpg')
+          },
+          {
+            slide: require ('./assets/images/home/home_slider_1.jpg')
+          },
+          {
+            slide: require ('./assets/images/home/home_slider_1.jpg')
+          }
+        ]    
       }
     }
   }

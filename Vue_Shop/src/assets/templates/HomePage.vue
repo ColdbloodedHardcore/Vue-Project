@@ -1,97 +1,16 @@
 <template>
    <div>
-     <div class="home">
-      <div class="home_slider_container">
-        
-        <!-- Home Slider -->
-        <div class="owl-carousel owl-theme home_slider">
-          
-          <!-- Slider Item -->
-          <div class="owl-item home_slider_item">
-            <div class="home_slider_background" style="background-image:url(images/home_slider_1.jpg)"></div>
-            <div class="home_slider_content_container">
-              <div class="container">
-                <div class="row">
-                  <div class="col">
-                    <div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
-                      <div class="home_slider_title">A new Online Shop experience.</div>
-                      <div class="home_slider_subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</div>
-                      <div class="button button_light home_button"><a href="#">Shop Now</a></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slider Item -->
-          <div class="owl-item home_slider_item">
-            <div class="home_slider_background" style="background-image:url(images/home_slider_1.jpg)"></div>
-            <div class="home_slider_content_container">
-              <div class="container">
-                <div class="row">
-                  <div class="col">
-                    <div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
-                      <div class="home_slider_title">A new Online Shop experience.</div>
-                      <div class="home_slider_subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</div>
-                      <div class="button button_light home_button"><a href="#">Shop Now</a></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slider Item -->
-          <div class="owl-item home_slider_item">
-            <div class="home_slider_background" style="background-image:url(images/home_slider_1.jpg)"></div>
-            <div class="home_slider_content_container">
-              <div class="container">
-                <div class="row">
-                  <div class="col">
-                    <div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
-                      <div class="home_slider_title">A new Online Shop experience.</div>
-                      <div class="home_slider_subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</div>
-                      <div class="button button_light home_button"><a href="#">Shop Now</a></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Home Slider Dots -->
-        
-        <div class="home_slider_dots_container">
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <div class="home_slider_dots">
-                  <ul id="home_slider_custom_dots" class="home_slider_custom_dots">
-                    <li class="home_slider_custom_dot active">01.</li>
-                    <li class="home_slider_custom_dot">02.</li>
-                    <li class="home_slider_custom_dot">03.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>	
-        </div>
-
-      </div>
-    </div>
+     <!-- Home -->
+     
 
     <!-- Ads -->
-
-    <div class="avds">
+    <section class="avds">
       <div class="avds_container d-flex flex-lg-row flex-column align-items-start justify-content-between">
         <div class="avds_small">
-          <div class="avds_background" style="background-image:url(images/avds_small.jpg)"></div>
+          <div class="avds_background" :style="{ backgroundImage: 'url(' + images.avds_small + ')' }"></div>
           <div class="avds_small_inner">
             <div class="avds_discount_container">
-              <img src="images/discount.png" alt="">
+              <img :src="images.discount" alt="">
               <div>
                 <div class="avds_discount">
                   <div>20<span>%</span></div>
@@ -106,7 +25,7 @@
           </div>
         </div>
         <div class="avds_large">
-          <div class="avds_background" style="background-image:url(images/avds_large.jpg)"></div>
+          <div class="avds_background" :style="{ backgroundImage: 'url(' + images.avds_large + ')' }"></div>
           <div class="avds_large_container">
             <div class="avds_large_content">
               <div class="avds_title">Professional Cameras</div>
@@ -116,37 +35,33 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Products -->
-
-    <products :posts="posts"/>
+    <products :posts="posts.slice(0, 8)"/>
 
     <!-- Ad -->
-
-    <div class="avds_xl">
+    <section class="avds_xl">
       <div class="container">
         <div class="row">
           <div class="col">
             <div class="avds_xl_container clearfix">
-              <div class="avds_xl_background" style="background-image:url(images/avds_xl.jpg)"></div>
+              <div class="avds_xl_background" :style="{ backgroundImage: 'url(' + images.avds_xl + ')' }"></div>
               <div class="avds_xl_content">
                 <div class="avds_title">Amazing Devices</div>
                 <div class="avds_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus.</div>
-                <div class="avds_link avds_xl_link"><a href="categories.html">See More</a></div>
+                <div class="avds_link avds_xl_link"><a href="#">See More</a></div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Icon Boxes -->
-
-    <div class="icon_boxes">
+    <section class="icon_boxes">
       <div class="container">
-        <div class="row icon_box_row">
-          
+        <div class="row icon_box_row">          
           <!-- Icon Box -->
           <div class="col-lg-4 icon_box_col"
                 v-for="icon in icons"
@@ -161,44 +76,18 @@
               </div>
             </div>
           </div>
-
-          
-
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Newsletter -->
-
-    <div class="newsletter">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="newsletter_border"></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-8 offset-lg-2">
-            <div class="newsletter_content text-center">
-              <div class="newsletter_title">Subscribe to our newsletter</div>
-              <div class="newsletter_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros</p></div>
-              <div class="newsletter_form_container">
-                <form action="#" id="newsletter_form" class="newsletter_form">
-                  <input type="email" class="newsletter_input" required="required">
-                  <button class="newsletter_button trans_200"><span>Subscribe</span></button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <newsletter/>   
    </div>
 </template>
 
 <script>
 export default {
-  props: ['posts', 'icons'],
+  props: ['posts', 'icons', 'images'],
   data () {
     return {
       
@@ -208,6 +97,281 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  .avds {
+    position: relative;
+    width: 100%;
+    background: #FFFFFF;
+    z-index: 2;
+
+    .avds_container {
+      width: 100%;
+      height: 490px;
+      padding-left: 60px;
+      padding-right: 60px;
+    }
+
+    /* Ad Small*/
+    .avds_small {
+      position: relative;
+      width: calc((100% * 0.391) - 15px);
+      height: 100%;
+      padding: 30px;
+
+      .avds_background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+      }     
+
+      .avds_small_inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border: solid 2px #FFFFFF;
+
+        .avds_discount_container {
+          position: absolute;
+          right: 36px;
+          bottom: 0;
+
+          & > div {
+            position: relative;
+            width: 100%;
+            height: 100%;
+          }
+
+          .avds_discount {
+            position: absolute;
+            bottom: 71px;
+            right: 0;
+            width: 152px;
+            text-align: center;
+
+            & div:first-child {
+              font-size: 60px;
+              font-weight: 700;
+              color: #1b1b1b;
+              line-height: 0.75;
+
+            & span {
+                font-size: 36px;
+                font-weight: 700;
+                vertical-align: super;
+              }
+            }
+
+            & div:last-child {
+              font-size: 14px;
+              font-weight: 400;
+              color: #1b1b1b;
+              margin-top: 1px;
+            }
+          }
+        }
+
+        .avds_small_content {
+          max-width: 250px;
+          padding-top: 57px;
+          padding-left: 31px;
+          padding-right: 30px;
+
+          .avds_title {
+            font-size: 48px;
+            font-weight: 600;
+            color: #FFFFFF;
+            line-height: 1.16;
+          }
+
+          .avds_link {
+            margin-top: 18px;
+            padding-left: 4px;
+
+            a {
+              position: relative;
+              display: inline-block;
+              font-size: 14px;
+              font-weight: 400;
+              color: #FFFFFF;
+
+              &::after {
+                display: block;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 1px;
+                background: #FFFFFF;
+                content: '';
+              }
+            }
+          }
+        }
+      }
+    }
+
+    /* Ad Large*/
+    .avds_large {
+      position: relative;
+      width: calc((100% * 0.608) - 15px);
+      height: 100%;
+
+      .avds_background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+      }
+
+      .avds_large_container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding-top: 39px;
+        padding-left: 32px;
+        padding-bottom: 44px;
+
+        .avds_large_content {
+          max-width: 567px;
+          height: 100%;
+          background: rgba(0,0,0,0.63);
+          padding-right: 130px;
+          padding-left: 30px;
+          padding-top: 51px;
+          padding-bottom: 30px;
+
+          .avds_title {
+            font-size: 48px;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.16;
+          }
+
+          .avds_text {
+            font-size: 14px;
+            font-weight: 400;
+            color: #FFFFFF;
+            line-height: 2.14;
+            margin-top: 11px;
+            padding-left: 2px;
+          }
+
+          .avds_link_large {
+            margin-top: 40px;
+
+            a {
+              position: relative;
+              display: inline-block;
+              font-size: 14px;
+              font-weight: 400;
+              color: #fff;
+
+              &::after {
+                display: block;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 1px;
+                background: #fff;
+                content: '';
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .avds_xl {
+    position: relative;
+    width: 100%;
+    background: #FFFFFF;
+    z-index: 2;
+
+    .clearfix {
+        zoom: 1;
+    }
+
+    &_container {
+      width: 100%;
+      height: 345px;
+      padding-top: 34px;
+      padding-right: 35px;
+      padding-bottom: 30px;
+      padding-left: 30px;
+
+      .avds_xl_background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+      }
+
+      .avds_xl_content {
+        position: relative;
+        width: 391px;
+        height: 100%;
+        background: #e95a5a;
+        float: right;
+        padding-top: 28px;
+        padding-left: 42px;
+        padding-right: 30px;    
+
+        .avds_title {
+          font-size: 48px;
+          font-weight: 600;
+          color: #fff;
+          line-height: 1.16;
+        }
+
+        .avds_text {
+          font-size: 14px;
+          font-weight: 400;
+          color: #fff;
+          line-height: 2.14;
+          margin-top: 11px;
+          padding-left: 2px;
+        }
+
+        .avds_xl_link {
+          margin-top: 18px; 
+
+          a {
+            position: relative;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 400;
+            color: #fff;
+
+            &::after {
+              display: block;
+              position: absolute;
+              left: 0;
+              bottom: 0;
+              width: 100%;
+              height: 1px;
+              background: #fff;
+              content: '';
+            }
+          }
+        }
+      }
+    }
+  }
+
   .icon_boxes {
     position: relative;
     width: 100%;
@@ -240,118 +404,6 @@ export default {
 
       .icon_box_text {
         margin-top: 20px;
-      }
-    }
-  }
-
-  .newsletter {
-    position: relative;
-    width: 100%;
-    background: #FFFFFF;
-    padding-bottom: 99px;
-    z-index: 2;
-
-    .newsletter_border {
-      width: 100%;
-      border-top: solid 2px #e3e3e3;
-    }
-
-    .newsletter_content {
-      padding-top: 88px;
-
-      .newsletter_title {
-        font-size: 30px;
-        font-weight: 500;
-        color: #1b1b1b;
-      }
-
-      .newsletter_text {
-        margin-top: 8px;
-
-        p {
-          font-family: poppins,sans-serif;
-          font-size: 14px;
-          line-height: 2.14;
-          font-weight: 400;
-          color: #6c6a74;
-          -webkit-font-smoothing: antialiased;
-          -webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
-          text-shadow: rgba(0,0,0,.01) 0 0 1px;
-        }
-      }
-
-      .newsletter_form_container {
-        width: 100%;
-        margin-top: 46px;
-
-        .newsletter_form {
-          width: 100%;
-
-          .newsletter_input {
-            width: 100%;
-            height: 40px;
-            border: none;
-            border-bottom: solid 2px #787878;
-            outline: none;
-            text-align: center;
-          }
-
-          .newsletter_button {
-            position: relative;
-            width: 178px;
-            height: 61px;
-            border: solid 2px #1b1b1b;
-            background: #FFFFFF;
-            cursor: pointer;
-            margin-top: 55px;
-            overflow: hidden; 
-
-            &::after {
-              content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 150%;
-                height: 100%;
-                background: #1b1b1b;
-                z-index: 0;
-                opacity: 0;
-                -webkit-transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
-                transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
-                -webkit-transform-origin: 0% 100%;
-                transform-origin: 0% 100%;
-                -webkit-transition: -webkit-transform 0.3s, opacity 0.3s, background-color 0.3s;
-                transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
-            }
-
-             &:hover::after {
-                opacity: 1;
-                -webkit-transform: rotate3d(0, 0, 1, 0deg);
-                transform: rotate3d(0, 0, 1, 0deg);
-                -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-                transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-            }           
-
-            & span {
-              display: block;
-              position: relative;
-              z-index: 10;
-              font-size: 16px;
-              font-weight: 600;
-              color: #1b1b1b;
-              background: none;
-              -webkit-transition: all 200ms ease;
-              -moz-transition: all 200ms ease;
-              -ms-transition: all 200ms ease;
-              -o-transition: all 200ms ease;
-              transition: all 200ms ease;
-            }
-
-            &:hover span {
-                color: #fff;
-              }
-          }
-        }
       }
     }
   }

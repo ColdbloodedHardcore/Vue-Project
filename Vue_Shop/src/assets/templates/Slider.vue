@@ -1,6 +1,6 @@
 <template>
   <section>
-   4
+   3
   </section>
 </template>
 
@@ -14,7 +14,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 
 </style>
-

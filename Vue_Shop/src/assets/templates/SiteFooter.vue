@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <div class="footer_overlay"></div>
       <footer class="footer">      
         <div class="footer_background" style="background-image: url(./src/assets/images/footer.jpg)"></div>
@@ -24,7 +24,7 @@
         </div>
       </div>
     </footer>
-  </div>
+  </section>
 </template>
 
 <script>

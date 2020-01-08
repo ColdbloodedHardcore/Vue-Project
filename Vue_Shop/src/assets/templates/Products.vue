@@ -1,5 +1,5 @@
 <template>
-    <div class="products">
+    <section class="products">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-3" 
@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>    
-    </div>    
+    </section>    
 </template>
 
 <script>
@@ -32,6 +32,10 @@
             return {
                 
             }
+        },
+        computed: {
+            postsView() {
+            }
         }
     }
 </script>
@@ -40,6 +44,7 @@
     .products {
         position: relative;
         z-index: 2;
+        padding-top: 100px;
         background-color: white;
 
         .product {
@@ -85,5 +90,5 @@
             }
         }
     }   
-    }     
+    }    
 </style>
