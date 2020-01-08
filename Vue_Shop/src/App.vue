@@ -1,12 +1,15 @@
 <template>
   <div id="shop">   
-    <site-header :navList="navList"
+    <!-- <site-header :navList="navList"
     />  
 
     <home :posts="posts"
           :images="images"
           :icons="icons"          
-    />   
+    />    -->
+
+    <slider :slides="slides"
+    />
 
     <site-footer/>
   </div>
@@ -134,13 +137,19 @@
         },
         slides: [
           {
-            slide: require ('./assets/images/home/home_slider_1.jpg')
+            slide_image: require ('./assets/images/home/home_slider_1.jpg'),
+            title: 'A new Online Shop experience.',
+            subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.'
           },
           {
-            slide: require ('./assets/images/home/home_slider_1.jpg')
+            slide_image: require ('./assets/images/home/home_slider_1.jpg'),
+            title: 'A new Online Shop experience.',
+            subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.'
           },
           {
-            slide: require ('./assets/images/home/home_slider_1.jpg')
+            slide_image: require ('./assets/images/home/home_slider_1.jpg'),
+            title: 'A new Online Shop experience.',
+            subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.'
           }
         ]    
       }
