@@ -18,17 +18,13 @@ Vue.component('Cart', ShoppingCart);
 Vue.component('Newsletter', Newsletter);
 Vue.component('Home', HomePage);
 Vue.component('SiteFooter', SiteFooter);
+Vue.component('Slider', Slider);
 
 import VueParallaxJs from 'vue-parallax-js'
 Vue.use(VueParallaxJs);
 
-import { Hooper, Slide, Navigation as HooperNavigation } from 'hooper'
-Vue.component('Slider', Slider);
-Vue.component('Hooper', Hooper);
-Vue.component('Slide', Slide);
-Vue.component('HooperNavigation', HooperNavigation);
-
-
+import VueAgile from 'vue-agile'
+Vue.use(VueAgile)
 
 
 new Vue({

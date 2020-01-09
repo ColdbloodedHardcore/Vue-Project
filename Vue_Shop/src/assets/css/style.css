@@ -26,3 +26,7 @@ a {
 ul {
   list-style: none;
 }
+
+div {
+  position: relative;
+}

@@ -99,28 +99,28 @@ export default {
 
             &::after {
               content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 150%;
-                height: 100%;
-                background: #1b1b1b;
-                z-index: 0;
-                opacity: 0;
-                -webkit-transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
-                transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
-                -webkit-transform-origin: 0% 100%;
-                transform-origin: 0% 100%;
-                -webkit-transition: -webkit-transform 0.3s, opacity 0.3s, background-color 0.3s;
-                transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 150%;
+              height: 100%;
+              background: #1b1b1b;
+              z-index: 0;
+              opacity: 0;
+              -webkit-transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+              transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+              -webkit-transform-origin: 0% 100%;
+              transform-origin: 0% 100%;
+              -webkit-transition: -webkit-transform 0.3s, opacity 0.3s, background-color 0.3s;
+              transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
             }
 
-             &:hover::after {
-                opacity: 1;
-                -webkit-transform: rotate3d(0, 0, 1, 0deg);
-                transform: rotate3d(0, 0, 1, 0deg);
-                -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-                transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+            &:hover::after {
+              opacity: 1;
+              -webkit-transform: rotate3d(0, 0, 1, 0deg);
+              transform: rotate3d(0, 0, 1, 0deg);
+              -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+              transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
             }           
 
             & span {

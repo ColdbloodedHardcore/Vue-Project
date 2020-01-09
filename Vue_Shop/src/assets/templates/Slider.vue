@@ -1,27 +1,28 @@
 <template>
     <div class="home">
-        <hooper class="home_slider_container" :settings="hooperSettings">          
+        <agile>          
             
-
-            <slide v-for="(slide, indx) in slides" :key="indx" :index="indx">
-                <div class="home_slider_background" :style="{ backgroundImage: 'url(' + slide.slide_image + ')' }"></div>
-                <div class="home_slider_content_container">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
-                                    <div class="home_slider_title">{{ slide.title }}</div>
-                                    <div class="home_slider_subtitle">{{ slide.subtitle }}</div>
-                                    <div class="button button_light home_button"><a href="#">Shop Now</a></div>
+            <!-- <div class="home_slider_container"> -->
+                <div v-for="(slide, indx) in slides" :key="indx" :index="indx">
+                    <div class="home_slider_background" :style="{ backgroundImage: 'url(' + slide.slide_image + ')' }"></div>
+                    <div class="home_slider_content_container">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
+                                        <div class="home_slider_title">{{ slide.title }}</div>
+                                        <div class="home_slider_subtitle">{{ slide.subtitle }}</div>
+                                        <div class="button button_light home_button"><a href="#">Shop Now</a></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </slide>
+            <!-- </div> -->
             
-            <!-- <hooper-navigation slot="hooper-addons"></hooper-navigation> -->
-        </hooper>
+           
+        </agile>
     </div>
 </template>
 
@@ -30,14 +31,7 @@ export default {
     props: ['slides'],
     data () {
         return {
-            hooperSettings: {
-            itemsToShow: 1,
-            itemsToSlide: 1,
-            centerMode: true,
-            // autoPlay: true,
-            playSpeed: 3000,
-            wheelControl: false
-            }
+                
         }
     }
 }
@@ -73,7 +67,7 @@ export default {
             .home_slider_content_container {
                 position: absolute;
                 left: 0;
-                top: 32.3%;
+                top: 200px;
                 width: 100%;
 
                 .home_slider_content {
@@ -95,7 +89,61 @@ export default {
                     }
 
                     .home_button {
+                        position: relative;
                         margin-top: 40px;
+                        width: 178px;
+                        height: 61px;
+                        background: 0 0;
+                        text-align: center;
+                        border: solid 2px #FFFFFF; 
+                        overflow: hidden;
+                        cursor: pointer;
+
+                        &:hover::after {
+                            opacity: 1;
+                            -webkit-transform: rotate3d(0, 0, 1, 0deg);
+                            transform: rotate3d(0, 0, 1, 0deg);
+                            -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+                            transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+                        }
+
+                        a {
+                            display: block;
+                            position: relative;
+                            font-size: 16px;
+                            font-weight: 600;
+                            line-height: 57px;
+                            color: #fff;
+                            background: none;
+                            z-index: 1;
+                            -webkit-transition: all 200ms ease;
+                            -moz-transition: all 200ms ease;
+                            -ms-transition: all 200ms ease;
+                            -o-transition: all 200ms ease;
+                            transition: all 200ms ease;                           
+                        }
+
+                        &:hover a {                            
+                            color: #1b1b1b;
+                        }
+
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 150%;
+                            height: 100%;
+                            background: #fff;
+                            z-index: 0;
+                            opacity: 0;
+                            -webkit-transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+                            transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+                            -webkit-transform-origin: 0% 100%;
+                            transform-origin: 0% 100%;
+                            -webkit-transition: -webkit-transform 0.3s, opacity 0.3s, background-color 0.3s;
+                            transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+                        }                    
                     }
                 }
             }
