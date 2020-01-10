@@ -1,16 +1,14 @@
 <template>
   <div id="shop">   
-    <!-- <site-header :navList="navList"
+    <site-header :navList="navList"
     />  
 
-    <home :posts="posts"
+    <home :slides="slides"
+          :posts="posts"
           :images="images"
           :icons="icons"          
-    />    -->
-
-    <slider :slides="slides"
-    />
-
+    />   
+   
     <site-footer/>
   </div>
 </template>

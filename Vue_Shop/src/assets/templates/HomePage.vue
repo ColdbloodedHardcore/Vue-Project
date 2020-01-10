@@ -1,7 +1,7 @@
 <template>
    <div>
-     <!-- Home -->
-     
+    <!-- Home -->
+     <slider :slides="slides"/>
 
     <!-- Ads -->
     <section class="avds">
@@ -87,7 +87,7 @@
 
 <script>
 export default {
-  props: ['posts', 'icons', 'images'],
+  props: ['slides', 'posts', 'icons', 'images'],
   data () {
     return {
       

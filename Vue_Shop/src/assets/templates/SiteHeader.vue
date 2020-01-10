@@ -103,7 +103,7 @@
                 showSearch: false,
                 showDropdown: false,
                 scrolled: {
-                    limitPosition: 100,
+                    limitPosition: 70,
                     height: 130,
                     lastPosition: 0
                 }                
@@ -112,7 +112,7 @@
         methods: {
             handleScroll() {
                 if (this.scrolled.lastPosition < window.scrollY && this.scrolled.limitPosition < window.scrollY) {
-                    this.scrolled.height = 70 + 'px';                
+                    this.scrolled.height = 70 + 'px';              
                     // move up!
                 } 
                 
@@ -153,6 +153,7 @@
 
         .header_content {
             height: 130px;
+            transition: 0.5s ease all;
 
             .logo {
                 a {
@@ -346,4 +347,6 @@
             }        
         }
     }  
+
+
 </style>
