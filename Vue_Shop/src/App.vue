@@ -3,11 +3,18 @@
     <site-header :navList="navList"
     />  
 
-    <home :slides="slides"
+    <home v-if="state == 'home'"
+          :slides="slides"
           :posts="posts"
           :images="images"
           :icons="icons"          
     />   
+
+    <single-page v-else-if="state == 'single'"
+                :icons="icons" 
+                :posts="posts"
+                :single="single"   
+    />
    
     <site-footer/>
   </div>
@@ -149,8 +156,19 @@
             title: 'A new Online Shop experience.',
             subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.'
           }
-        ]    
+        ],
+        single: {
+          home: require ('./assets/images/products/products_header.jpg'),
+        } 
       }
+    },
+    methods: {
+      onHome() {
+        this.state = 'home';  
+      },
+      onSingle() {
+        this.state = 'single';        
+      }  
     }
   }
 </script>
