@@ -18,6 +18,7 @@
     />    
 
     <single-page v-else-if="state == 'single'"
+                  :single="single"
                   :hero="hero" 
                   :posts="posts"                  
     />
@@ -166,7 +167,14 @@
         ],
         hero: {
           home: require ('./assets/images/products/products_header.jpg'),
-        } 
+        },
+        single: {
+          large: require ('./assets/images/single_page/details_1.jpg'),
+          thumbnail_1: require ('./assets/images/single_page/details_1.jpg'),          
+          thumbnail_2: require ('./assets/images/single_page/details_2.jpg'),
+          thumbnail_3: require ('./assets/images/single_page/details_3.jpg'),
+          thumbnail_4: require ('./assets/images/single_page/details_4.jpg')
+        }        
       }
     },
     methods: {
