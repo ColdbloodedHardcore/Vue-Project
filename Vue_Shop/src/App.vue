@@ -3,6 +3,7 @@
     <site-header :navList="navList"
     />  
 
+
     <home v-if="state == 'home'"
           :slides="slides"
           :posts="posts"
@@ -10,13 +11,19 @@
           :icons="icons"          
     />   
 
-    <single-page v-else-if="state == 'single'"
+    <category v-else-if="state == 'category'"
                 :icons="icons" 
                 :posts="posts"
-                :single="single"   
+                :hero="hero"   
+    />    
+
+    <single-page v-else-if="state == 'single'"
+                  :hero="hero" 
+                  :posts="posts"                  
     />
-   
-    <site-footer/>
+
+
+    <site-footer />
   </div>
 </template>
 
@@ -25,7 +32,7 @@
     name: 'shop',
     data() {
       return {
-        state: 'home',
+        state: 'single',
         navList: [
         { url: "javascript:void(0)", name: "Home"},
         { url: "javascript:void(0)", name: "Categories",
@@ -157,18 +164,12 @@
             subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.'
           }
         ],
-        single: {
+        hero: {
           home: require ('./assets/images/products/products_header.jpg'),
         } 
       }
     },
     methods: {
-      onHome() {
-        this.state = 'home';  
-      },
-      onSingle() {
-        this.state = 'single';        
-      }  
     }
   }
 </script>
