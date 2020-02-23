@@ -34,7 +34,6 @@
 export default {
   props: ['icons', 'posts', 'hero'],
   name: 'category',
-  state: 'category',
   data () {
     return {
       

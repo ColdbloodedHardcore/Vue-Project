@@ -30,13 +30,13 @@ export default {
     props: ['slides'],
     data () {
         return {
-               options: {
-                    dots: false,
-                    navButtons: false,
-                    speed: 3000,
-                    timing: 'linear',
-                    // autoplay: true
-               }
+            options: {
+                dots: false,
+                navButtons: false,
+                speed: 3000,
+                timing: 'linear',
+                // autoplay: true
+            },
         }
     }
 }

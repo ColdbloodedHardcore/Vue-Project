@@ -5,30 +5,30 @@
                 <div class="col">
                     <div class="header_content d-flex flex-row align-items-center justify-content-start" :style="{'height': scrolled.height}">
                         <div class="logo">
-                            <a href="#">Sublime.</a>
+                            <router-link to="/">Sublime</router-link>
                         </div>
 
                         <nav class="main_nav">
                             <ul>
                                <li v-for="item in navList">
                                     <template v-if="item.children">
-                                        <a 
-                                        :href="item.url" 
+                                        <a
+                                        :to="item.url" 
                                         :title="item.name" 
                                         @click="dropShow()" 
                                         >{{ item.name }}<i class="fas fa-chevron-down"></i></a>
                                         <div :class="{ showDropdown }" class="dropdown" v-show="showDropdown">
                                             <ul>
                                                 <li v-for="{ url, name } in item.children">
-                                                    <a :href="url" :title="name" @click="itemClicked(item)">{{ name }}</a>
+                                                    <router-link  :to="url" :title="name">{{ name }}</router-link>
                                                 </li>
                                             </ul>
                                         </div>    
                                     </template>
                                     <template v-else>
-                                        <a 
-                                        :href="item.url" 
-                                        :title="item.name">{{ item.name }}</a>
+                                        <router-link 
+                                        :to="item.url" 
+                                        :title="item.name">{{ item.name }}</router-link>
                                     </template>
                                 </li>
                             </ul>                            
@@ -97,9 +97,37 @@
 
 <script>
     export default {     
-        props: ['navList'],  
         data () {
             return {
+                navList: [
+                    { url: "/", name: "Home"},
+                    { url: "#", name: "Categories",
+                    children: [
+                        {
+                        url: "/category",
+                        name: "Category"
+                        },
+                        {
+                        url: "/category",
+                        name: "Category"
+                        },
+                        {
+                        url: "/category",
+                        name: "Category"
+                        },
+                        {
+                        url: "/category",
+                        name: "Category"
+                        },
+                        {
+                        url: "/category",
+                        name: "Category"
+                        }
+                    ]},
+                    { url: "/single", name: "Product" },
+                    { url: "#", name: "Offers" },
+                    { url: "#", name: "Contact" }
+                ],
                 showSearch: false,
                 showDropdown: false,
                 scrolled: {
@@ -127,10 +155,7 @@
             dropShow() {
                 this.showDropdown = !this.showDropdown;
                 this.active = !this.active;
-            },
-            itemClicked(item) {
-                this.dropShow();
-            },
+            }
         },
         created() {
             window.addEventListener("scroll", this.handleScroll);
@@ -157,14 +182,15 @@
 
             .logo {
                 a {
-                font-size: 30px;
-                font-weight: 700;
-                color: #1b1b1b;
-                -webkit-transition: all 200ms ease;
-                -moz-transition: all 200ms ease;
-                -ms-transition: all 200ms ease;
-                -o-transition: all 200ms ease;
-                transition: all 200ms ease;
+                    cursor: pointer;
+                    font-size: 30px;
+                    font-weight: 700;
+                    color: #1b1b1b;
+                    -webkit-transition: all .6s ease;
+                    -moz-transition: all .6s ease;
+                    -ms-transition: all .6s ease;
+                    -o-transition: all .6s ease;
+                    transition: all .6s ease;
                 }
             }
 
@@ -181,14 +207,15 @@
                     }                   
 
                     a {
+                        cursor: pointer;
                         font-size: 16px;
                         font-weight: 600;
                         color: #767676;
-                        -webkit-transition: all 200ms ease;
-                        -moz-transition: all 200ms ease;
-                        -ms-transition: all 200ms ease;
-                        -o-transition: all 200ms ease;
-                        transition: all 200ms ease;  
+                        -webkit-transition: all .6s ease;
+                        -moz-transition: all .6s ease;
+                        -ms-transition: all .6s ease;
+                        -o-transition: all .6s ease;
+                        transition: all .6s ease;  
 
                         &:hover {
                             fill: #e95a5a;
@@ -260,11 +287,11 @@
                     width: 20px;
                     height: 20px;
                     vertical-align: sub;
-                    -webkit-transition: all 200ms ease;
-                    -moz-transition: all 200ms ease;
-                    -ms-transition: all 200ms ease;
-                    -o-transition: all 200ms ease;
-                    transition: all 200ms ease;
+                    -webkit-transition: all .6s ease;
+                    -moz-transition: all .6s ease;
+                    -ms-transition: all .6s ease;
+                    -o-transition: all .6s ease;
+                    transition: all .6s ease;
                     }
 
                     div {
@@ -274,11 +301,11 @@
                         font-weight: 500;
                         color: #1b1b1b;
                         margin-left: 13px;
-                        -webkit-transition: all 200ms ease;
-                        -moz-transition: all 200ms ease;
-                        -ms-transition: all 200ms ease;
-                        -o-transition: all 200ms ease;
-                        transition: all 200ms ease;
+                        -webkit-transition: all .6s ease;
+                        -moz-transition: all .6s ease;
+                        -ms-transition: all .6s ease;
+                        -o-transition: all .6s ease;
+                        transition: all .6s ease;
                     }
                 }            
             }
@@ -291,11 +318,16 @@
                 -moz-transform: translateY(-1px);
                 -ms-transform: translateY(-1px);
                 -o-transform: translateY(-1px);
-                transform: translateY(-1px);
+                transform: translateY(-1px);                
 
                 &_icon {
                     width: 13px;
                     height: 13px;
+                    -webkit-transition: all .6s ease;
+                    -moz-transition: all .6s ease;
+                    -ms-transition: all .6s ease;
+                    -o-transition: all .6s ease;
+                    transition: all .6s ease;
 
                     &:hover {
                         fill: #e95a5a;
@@ -347,6 +379,4 @@
             }        
         }
     }  
-
-
 </style>

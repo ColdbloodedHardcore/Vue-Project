@@ -1,30 +1,30 @@
 <template>
-  <section>
+  <footer>
     <div class="footer_overlay"></div>
-      <footer class="footer">      
+      <div class="footer">      
         <div class="footer_background" style="background-image: url(./src/assets/images/footer.jpg)"></div>
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <div class="footer_content d-flex ">
-                <div class="footer_logo"><a href="#">Sublime.</a></div>
-                <div class="copyright ml-auto mr-auto">
-                  Copyright &copy;2020 All rights reserved | This template is made with 
-                <i class="far fa-heart"></i> by <a href="#" target="_blank">Colorlib</a></div>
-                <div class="footer_social ml-lg-auto">
-                <ul>
-                  <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                  <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                  <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                  <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                </ul>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="footer_content d-flex ">
+                  <div class="footer_logo"><a href="#">Sublime.</a></div>
+                  <div class="copyright ml-auto mr-auto">
+                    Copyright &copy;2020 All rights reserved | This template is made with 
+                  <i class="far fa-heart"></i> by <a href="#" target="_blank">Colorlib</a></div>
+                  <div class="footer_social ml-lg-auto">
+                  <ul>
+                    <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </footer>
-  </section>
+  </footer>
 </template>
 
 <script>
@@ -101,11 +101,11 @@ export default {
               & a i  {
                 font-size: 17px;
                 color: #1b1b1b;
-                -webkit-transition: all 200ms ease;
-                -moz-transition: all 200ms ease;
-                -ms-transition: all 200ms ease;
-                -o-transition: all 200ms ease;
-                transition: all 200ms ease;
+                -webkit-transition: all .6s ease;
+                -moz-transition: all .6s ease;
+                -ms-transition: all .6s ease;
+                -o-transition: all .6s ease;
+                transition: all .6s ease;
 
                 &:hover {
                   color: #e95a5a;

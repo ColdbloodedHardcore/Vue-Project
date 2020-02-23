@@ -30,7 +30,6 @@
         props: ['posts'],
         data () {
             return {
-                
             }
         },
         computed: {
