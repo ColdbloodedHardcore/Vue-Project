@@ -19,7 +19,7 @@
       </div>
 	  </div>
    
-    <!-- Products -->
+    <!-- Products -->     
     <products :posts="posts"/>
 
     <!-- Icon Boxes -->

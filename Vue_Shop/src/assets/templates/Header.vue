@@ -36,7 +36,7 @@
 
                         <div class="ml-auto">
                             <div class="shopping_cart">
-                                <a href="cart.html">
+                                <router-link to="/cart">
 
                                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve">
                                         <g>
@@ -49,7 +49,7 @@
                                     </svg>
 
                                     <div>Cart <span>(0)</span></div>
-                                </a>
+                                </router-link>
                             </div>
 
                             <div class="search" @click="showSearch=!showSearch">
@@ -125,8 +125,8 @@
                         }
                     ]},
                     { url: "/single", name: "Product" },
-                    { url: "#", name: "Offers" },
-                    { url: "#", name: "Contact" }
+                    { url: "/check", name: "Check Out" },
+                    { url: "/contact", name: "Contact" }
                 ],
                 showSearch: false,
                 showDropdown: false,

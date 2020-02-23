@@ -35,7 +35,7 @@ export default {
                 navButtons: false,
                 speed: 3000,
                 timing: 'linear',
-                // autoplay: true
+                autoplay: true
             },
         }
     }
