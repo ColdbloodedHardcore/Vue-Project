@@ -197,6 +197,7 @@
 
 <script>
 export default {
+    name: 'check',
     data () {
         return {
         

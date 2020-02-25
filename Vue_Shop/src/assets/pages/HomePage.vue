@@ -38,7 +38,7 @@
     </section>
 
     <!-- Products -->
-    <products :posts="posts.slice(0, 8)"/>
+    <products :posts="posts"/>
 
     <!-- Ad -->
     <section class="avds_xl">
@@ -79,6 +79,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  .products {
+    .sorting_bar {
+      display: none !important;
+    }
+  }
+
   .avds {
     position: relative;
     width: 100%;

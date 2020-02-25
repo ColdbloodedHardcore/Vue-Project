@@ -14,21 +14,19 @@
                                     <template v-if="item.children">
                                         <a
                                         :to="item.url" 
-                                        :title="item.name" 
-                                        @click="dropShow()" 
+                                        @click="dropShow()"                                        
                                         >{{ item.name }}<i class="fas fa-chevron-down"></i></a>
                                         <div :class="{ showDropdown }" class="dropdown" v-show="showDropdown">
                                             <ul>
                                                 <li v-for="{ url, name } in item.children">
-                                                    <router-link  :to="url" :title="name">{{ name }}</router-link>
+                                                    <router-link  :to="url">{{ name }}</router-link>
                                                 </li>
                                             </ul>
                                         </div>    
                                     </template>
                                     <template v-else>
                                         <router-link 
-                                        :to="item.url" 
-                                        :title="item.name">{{ item.name }}</router-link>
+                                        :to="item.url">{{ item.name }}</router-link>
                                     </template>
                                 </li>
                             </ul>                            
@@ -154,7 +152,7 @@
             },
             dropShow() {
                 this.showDropdown = !this.showDropdown;
-                this.active = !this.active;
+                this.active = !this.active;               
             }
         },
         created() {
@@ -220,7 +218,7 @@
                         &:hover {
                             fill: #e95a5a;
                             color: #e95a5a;
-                        }   
+                        }  
 
                         i {
                             position: absolute;
@@ -263,6 +261,8 @@
                         }
                         
                     }
+
+                      
 
                     &.showDropdown {
                         transform: translatex(-50%);

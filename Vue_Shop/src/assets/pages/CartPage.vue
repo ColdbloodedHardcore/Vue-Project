@@ -163,6 +163,7 @@
 <script>
 export default {
   props: ['products'],
+  name: 'cart',
   data () {
     return {
       

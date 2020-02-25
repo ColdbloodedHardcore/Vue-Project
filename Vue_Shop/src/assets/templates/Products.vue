@@ -12,10 +12,10 @@
                                     <li>
                                         <span class="sorting_text">Sort by</span>
                                         <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                                        <ul>
-                                            <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>Default</span></li>
-                                            <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Price</span></li>
-                                            <li class="product_sorting_btn" data-isotope-option='{ "sortBy": "stars" }'><span>Name</span></li>
+                                        <ul>   
+                                            <li class="product_sorting_btn"><span>Default</span></li>
+                                            <li class="product_sorting_btn" @click="sortByPrice()"><span>Price</span></li>
+                                            <li class="product_sorting_btn" @click="sortByTitle()"><span>Name</span></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -53,13 +53,41 @@
     export default {
         props: ['posts'],
         data () {
-            return {
-            }
+            return {    
+                
+            }                
         },
         computed: {
-            postsView() {
+                      
+        },
+        methods: {            
+            sortByTitle() {              
+
+                let title = [];                
+
+                for (let i in this.posts) {
+                    title.push(this.posts[i].title); 
+                }
+                console.log(title);
+
+                title.sort();
+                console.log(title);  
+            },
+            sortByPrice() {
+                let price = [];
+
+                for (let i in this.posts) {
+                    price.push(this.posts[i].price);
+                }
+
+                console.log(price);
+
+                price.sort(function(a, b) {
+                    return a - b;
+                })
+                console.log(price);
             }
-        }
+        }    
     }
 </script>
 
