@@ -26,8 +26,9 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
-    props: ['slides'],
     data () {
         return {
             options: {
@@ -38,7 +39,10 @@ export default {
                 autoplay: true
             },
         }
-    }
+    },
+    computed: {
+        ...mapGetters(['slides'])        
+    },
 }
 </script>
 

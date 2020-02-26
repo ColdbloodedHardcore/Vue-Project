@@ -50,15 +50,16 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex'
+
     export default {
-        props: ['posts'],
         data () {
             return {    
                 
             }                
         },
         computed: {
-                      
+            ...mapGetters(['posts'])        
         },
         methods: {            
             sortByTitle() {              

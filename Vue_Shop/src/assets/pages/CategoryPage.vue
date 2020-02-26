@@ -3,7 +3,7 @@
     <!-- Home -->
     <div class="home">
       <div class="home_container">
-        <div class="home_background" :style="{ backgroundImage: 'url(' + hero.home + ')' }"></div>
+        <div class="home_background" style="background-image:url(./assets/images/products/products_header.jpg)"></div>
         <div class="home_content_container">
           <div class="container">
             <div class="row">
@@ -20,10 +20,10 @@
 	  </div>
    
     <!-- Products -->     
-    <products :posts="posts"/>
+    <products/>
 
     <!-- Icon Boxes -->
-    <icon-box :icons="icons"/>
+    <icon-box/>
 
     <!-- Newsletter -->
     <newsletter/>   
@@ -31,14 +31,19 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
-  props: ['icons', 'posts', 'hero'],
   name: 'category',
   data () {
     return {
       
     }
-  }
+  },
+  computed: {
+    ...mapGetters(['posts']),
+    ...mapGetters(['icons'])           
+  },
 }
 </script>
 

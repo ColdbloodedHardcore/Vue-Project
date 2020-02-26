@@ -1,6 +1,22 @@
 <template>
    <div>
-    <hero :hero="hero"/>
+    <div class="home">
+        <div class="home_container">
+            <div class="home_background" style="background-image:url(../../assets/images/products/products_header.jpg)"></div>
+            <div class="home_content_container">
+            <div class="container">
+                <div class="row">
+                <div class="col">
+                    <div class="home_content">
+                    <div class="home_title">Smart Phones<span>.</span></div>
+                    <div class="home_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</p></div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Product Details -->
 	<div class="product_details">
@@ -10,12 +26,12 @@
 				<!-- Product Image -->
 				<div class="col-lg-6">
 					<div class="details_image">
-						<div class="details_image_large"><img :src="single.large" alt=""><div class="product_extra product_new"><a href="#">New</a></div></div>
+						<div class="details_image_large"><img src="../images/single_page/details_1.jpg" alt=""><div class="product_extra product_new"><a href="#">New</a></div></div>
 						<div class="details_image_thumbnails d-flex flex-row align-items-start justify-content-between">
-							<div class="details_image_thumbnail active" data-image="images/details_1.jpg"><img :src="single.thumbnail_1" alt=""></div>
-							<div class="details_image_thumbnail" data-image="images/details_2.jpg"><img :src="single.thumbnail_2" alt=""></div>
-							<div class="details_image_thumbnail" data-image="images/details_3.jpg"><img :src="single.thumbnail_3" alt=""></div>
-							<div class="details_image_thumbnail" data-image="images/details_4.jpg"><img :src="single.thumbnail_4" alt=""></div>
+							<div class="details_image_thumbnail active" data-image="images/details_1.jpg"><img src="../images/single_page/details_1.jpg" alt=""></div>
+							<div class="details_image_thumbnail" data-image="images/details_2.jpg"><img src="../images/single_page/details_2.jpg" alt=""></div>
+							<div class="details_image_thumbnail" data-image="images/details_3.jpg"><img src="../images/single_page/details_3.jpg" alt=""></div>
+							<div class="details_image_thumbnail" data-image="images/details_4.jpg"><img src="../images/single_page/details_4.jpg" alt=""></div>
 						</div>
 					</div>
 				</div>
@@ -87,7 +103,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <products :posts="posts.slice(0, 4)"/>   
+                    <products/>   
                 </div> 
             </div> 
         </div> 
@@ -99,18 +115,84 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
-  props: ['slides', 'posts', 'hero', 'single'],
   name: 'single',
   data () {
     return {
       
     }
-  }
+  },
+  computed: {
+    ...mapGetters(['slides']),
+    ...mapGetters(['posts'])        
+  },
 }
 </script>
 
 <style scoped lang="scss">
+    .home {    
+        width: 100%;
+        height: 625px;
+        background: #FFFFFF;
+        z-index: 2;
+        padding-top: 130px;
+        padding-left: 60px;
+        padding-right: 60px;
+
+        &_container {
+            width: 100%;
+            height: 100%;
+
+            .home_background {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center center;
+            }
+
+                .home_content_container {
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    -webkit-transform: translateY(-50%);
+                    -moz-transform: translateY(-50%);
+                    -ms-transform: translateY(-50%);
+                    -o-transform: translateY(-50%);
+                    transform: translateY(-50%);
+                    width: 100%;
+
+                    .home_content {
+                    width: 580px;
+
+                    .home_title {
+                        font-size: 60px;
+                        font-weight: 600;
+                        color: #FFFFFF;
+                        line-height: 1.2;
+
+                        span {
+                        color: #e95a5a;
+                        }
+                    }
+
+                    .home_text {
+                        margin-top: 7px;
+
+                        p {
+                        color: #FFFFFF;
+                        }
+                    }
+                    }
+                }
+            }
+    }
+
     // Product Details
     .product_details {
         width: 100%;

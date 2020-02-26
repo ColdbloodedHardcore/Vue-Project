@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import store from './state/store.js'
 
 // Pages
 import HomePage from './assets/pages/HomePage.vue'
@@ -12,7 +13,6 @@ import CheckOutPage from './assets/pages/CheckOutPage.vue'
 
 // Template Parts
 import Header from './assets/templates/Header.vue'
-import Hero from './assets/templates/Hero.vue'
 import Products from './assets/templates/Products.vue'
 import Newsletter from './assets/templates/Newsletter.vue'
 import IconBox from './assets/templates/IconBox.vue'
@@ -31,7 +31,6 @@ Vue.component('Check', CheckOutPage);
 
 // Template Parts
 Vue.component('SiteHeader', Header);
-Vue.component('Hero', Hero);
 Vue.component('Slider', Slider);
 Vue.component('Products', Products);
 Vue.component('Newsletter', Newsletter);
@@ -47,12 +46,11 @@ Vue.use(VueParallaxJs);
 import VueAgile from 'vue-agile'
 Vue.use(VueAgile)
 
-// Sort By
-
 
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#shop')
 

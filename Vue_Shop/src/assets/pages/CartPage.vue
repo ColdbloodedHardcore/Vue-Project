@@ -161,14 +161,18 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
-  props: ['products'],
   name: 'cart',
   data () {
     return {
       
     }
-  }
+  },
+  computed: {
+    ...mapGetters(['products'])         
+  },
 }
 </script>
 

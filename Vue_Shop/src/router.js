@@ -17,38 +17,32 @@ export default new Router({
       {
         path: '/',
         name: 'home',
-        component: Home,
-        props: true
+        component: Home
       },
       {
         path: '/single',
         name: 'single',
-        component: Single,
-        props: true
+        component: Single
       },
       {
         path: '/category',
         name: 'category',
-        component: Category,
-        props: true
+        component: Category
       },
       {
         path: '/check',
         name: 'check',
-        component: Check,
-        props: true,
+        component: Check
       }, 
       {
         path: '/cart',
         name: 'cart',
-        component: Cart,
-        props: true,
+        component: Cart
       },   
       {
         path: '/contact',
         name: 'contact',
-        component: Contact,
-        props: true,
+        component: Contact
       }        
     ]
   })
