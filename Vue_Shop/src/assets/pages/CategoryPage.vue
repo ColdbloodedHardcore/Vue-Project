@@ -3,7 +3,7 @@
     <!-- Home -->
     <div class="home">
       <div class="home_container">
-        <div class="home_background" style="background-image:url(./assets/images/products/products_header.jpg)"></div>
+        <div class="home_background" style="background-image:url(/src/assets/images/products/products_header.jpg)"></div>
         <div class="home_content_container">
           <div class="container">
             <div class="row">

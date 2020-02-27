@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col">					
                     <!-- Product Sorting -->
-                    <div class="sorting_bar d-flex flex-md-row flex-column align-items-md-center justify-content-md-start">
+                    <div v-if="sortBarActive"  class="sorting_bar d-flex flex-md-row flex-column align-items-md-center justify-content-md-start">
                         <div class="results">Showing <span>12</span> results</div>
                         <div class="sorting_container ml-md-auto">
                             <div class="sorting">
@@ -13,7 +13,7 @@
                                         <span class="sorting_text">Sort by</span>
                                         <i class="fa fa-chevron-down" aria-hidden="true"></i>
                                         <ul>   
-                                            <li class="product_sorting_btn"><span>Default</span></li>
+                                            <li class="product_sorting_btn" @click="sortByDefault()"><span>Default</span></li>
                                             <li class="product_sorting_btn" @click="sortByPrice()"><span>Price</span></li>
                                             <li class="product_sorting_btn" @click="sortByTitle()"><span>Name</span></li>
                                         </ul>
@@ -25,10 +25,11 @@
                 </div>
             </div>
             
-            <div class="row">
+            
+            <transition-group class="row" name="flip-list" tag="div">
                 <div class="col-lg-3 col-md-3 col-3" 
                     v-for="post in posts"
-                    :key="post.id"
+                    :key="post"
                     >
 
                     <div class="product">
@@ -40,11 +41,12 @@
                             <div class="product_title">
                                 <a href="#">{{ post.title }}</a>
                             </div>
-                            <div class="product_price">{{ post.price }}$</div>                                         
+
+                            <div class="product_price">{{ post.price }}$</div>                                  
                         </div>
                     </div>
                 </div>
-            </div>
+            </transition-group>
         </div>    
     </section>    
 </template>
@@ -55,40 +57,26 @@
     export default {
         data () {
             return {    
-                
+
             }                
         },
         computed: {
-            ...mapGetters(['posts'])        
+            ...mapGetters(['posts'], ['sortBar']), 
+            sortBarActive() {
+                return this.sortBar = true;
+            }
         },
-        methods: {            
-            sortByTitle() {              
-
-                let title = [];                
-
-                for (let i in this.posts) {
-                    title.push(this.posts[i].title); 
-                }
-                console.log(title);
-
-                title.sort();
-                console.log(title);  
+        methods: {  
+            sortByDefault() {
+                this.posts.sort((a, b) => Math.random() - 0.5);
+            },
+            sortByTitle() { 
+                this.posts.sort((a, b) => a.title > b.title ? 1 : -1);     
             },
             sortByPrice() {
-                let price = [];
-
-                for (let i in this.posts) {
-                    price.push(this.posts[i].price);
-                }
-
-                console.log(price);
-
-                price.sort(function(a, b) {
-                    return a - b;
-                })
-                console.log(price);
+                this.posts.sort((a, b) => a.price > b.price ? 1 : -1);          
             }
-        }    
+        },   
     }
 </script>
 
@@ -98,6 +86,7 @@
         z-index: 2;
         padding-top: 100px;
         background-color: white;
+        transition: all 1s ease;
 
         .sorting_bar {
             width: 100%;
@@ -246,4 +235,8 @@
             }
         }   
     }    
+
+    .flip-list-move {
+        transition: transform 1s;
+    }
 </style>

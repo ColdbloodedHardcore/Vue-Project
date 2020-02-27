@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import Axios from 'axios'
 
 const state = {
@@ -63,21 +64,30 @@ const state = {
             price: 580
         }
     ],
+    sortBar: Boolean
 }
 
 const getters = {
-    posts : state => state.posts    
+    posts : state => state.posts,
+    sortBar : state => state.sortBar
 }
 
 const mutations = {
     set_posts : (state, payload) => {
         state.posts = payload
     },
+    set_sortBar : (state, payload) => {
+        state.sortBar = payload
+    },
+
 }
 
 const actions = {
     set_posts : (context, payload) => {
         context.commit("set_post", payload);
+    },
+    set_sortBar : (context, payload) => {
+        context.commit("set_sortBar", payload);
     },
 }
 

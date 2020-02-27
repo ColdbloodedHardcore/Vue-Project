@@ -2,7 +2,7 @@
    <div>
     <div class="home">
         <div class="home_container">
-            <div class="home_background" style="background-image:url(../../assets/images/products/products_header.jpg)"></div>
+            <div class="home_background" style="background-image:url(/src/assets/images/products/products_header.jpg)"></div>
             <div class="home_content_container">
             <div class="container">
                 <div class="row">
@@ -26,12 +26,12 @@
 				<!-- Product Image -->
 				<div class="col-lg-6">
 					<div class="details_image">
-						<div class="details_image_large"><img src="../images/single_page/details_1.jpg" alt=""><div class="product_extra product_new"><a href="#">New</a></div></div>
+						<div class="details_image_large"><img src="/src/assets/images/single_page/details_1.jpg" alt=""><div class="product_extra product_new"><a href="#">New</a></div></div>
 						<div class="details_image_thumbnails d-flex flex-row align-items-start justify-content-between">
-							<div class="details_image_thumbnail active" data-image="images/details_1.jpg"><img src="../images/single_page/details_1.jpg" alt=""></div>
-							<div class="details_image_thumbnail" data-image="images/details_2.jpg"><img src="../images/single_page/details_2.jpg" alt=""></div>
-							<div class="details_image_thumbnail" data-image="images/details_3.jpg"><img src="../images/single_page/details_3.jpg" alt=""></div>
-							<div class="details_image_thumbnail" data-image="images/details_4.jpg"><img src="../images/single_page/details_4.jpg" alt=""></div>
+							<div class="details_image_thumbnail active" data-image="images/details_1.jpg"><img src="/src/assets/images/single_page/details_1.jpg" alt=""></div>
+							<div class="details_image_thumbnail" data-image="images/details_2.jpg"><img src="/src/assets/images/single_page/details_2.jpg" alt=""></div>
+							<div class="details_image_thumbnail" data-image="images/details_3.jpg"><img src="/src/assets/images/single_page/details_3.jpg" alt=""></div>
+							<div class="details_image_thumbnail" data-image="images/details_4.jpg"><img src="/src/assets/images/single_page/details_4.jpg" alt=""></div>
 						</div>
 					</div>
 				</div>
@@ -121,7 +121,7 @@ export default {
   name: 'single',
   data () {
     return {
-      
+        
     }
   },
   computed: {

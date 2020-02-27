@@ -7,10 +7,10 @@
     <section class="avds">
       <div class="avds_container d-flex flex-lg-row flex-column align-items-start justify-content-between">
         <div class="avds_small">
-          <div class="avds_background" style="background-image:url(../images/home/home_1.jpg)"></div>
+          <div class="avds_background" style="background-image:url(/src/assets/images/home/home_1.jpg)"></div>
           <div class="avds_small_inner">
             <div class="avds_discount_container">
-              <img src="../../assets/images/home/discount.png" alt="">
+              <img src="/src/assets/images/home/discount.png" alt="">
               <div>
                 <div class="avds_discount">
                   <div>20<span>%</span></div>
@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="avds_large">
-          <div class="avds_background" style="background-image:url(../images/home/home_2.jpg)"></div>
+          <div class="avds_background" style="background-image:url(/src/assets/images/home/home_2.jpg)"></div>
           <div class="avds_large_container">
             <div class="avds_large_content">
               <div class="avds_title">Professional Cameras</div>
@@ -46,7 +46,7 @@
         <div class="row">
           <div class="col">
             <div class="avds_xl_container clearfix">
-              <div class="avds_xl_background" style="background-image:url(../images/home/home_3.jpg)"></div>
+              <div class="avds_xl_background" style="background-image:url(/src/assets//images/home/home_3.jpg)"></div>
               <div class="avds_xl_content">
                 <div class="avds_title">Amazing Devices</div>
                 <div class="avds_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus.</div>
@@ -78,9 +78,9 @@ export default {
   },
   computed: {
     ...mapGetters(['slides']),
-    ...mapGetters(['posts']),
-    ...mapGetters(['icons'])           
-  },
+    ...mapGetters(['posts', 'sortBar']),
+    ...mapGetters(['icons']),             
+  }
 }
 </script>
 
