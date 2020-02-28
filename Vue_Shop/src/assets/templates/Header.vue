@@ -10,19 +10,20 @@
 
                         <nav class="main_nav">
                             <ul>
-                               <li v-for="item in navList">
+                               <li v-for="(item, i) in navList" :key="i">
                                     <template v-if="item.children">
-                                        <a
-                                        :to="item.url" 
-                                        @click="dropShow()"                                        
-                                        >{{ item.name }}<i class="fas fa-chevron-down"></i></a>
+
+                                        <a :to="item.url" @click.stop="dropShow()"                                       
+                                        > {{ item.name }}<i class="fas fa-chevron-down"></i></a>  
+
                                         <div :class="{ showDropdown }" class="dropdown" v-show="showDropdown">
                                             <ul>
-                                                <li v-for="{ url, name } in item.children">
+                                                <li v-for="{ url, name, i } in item.children" :key="i">
                                                     <router-link  :to="url">{{ name }}</router-link>
                                                 </li>
-                                            </ul>
-                                        </div>    
+                                              </ul>
+                                        </div>   
+                                         
                                     </template>
                                     <template v-else>
                                         <router-link 
@@ -151,12 +152,16 @@
                 // this.scrolled = window.scrollY > 250;
             },
             dropShow() {
-                this.showDropdown = !this.showDropdown;
-                this.active = !this.active;               
+                this.showDropdown = !this.showDropdown; 
+            },
+            dropHide() {
+                this.showDropdown =  false;
             }
         },
         created() {
             window.addEventListener("scroll", this.handleScroll);
+            document.addEventListener('click', this.dropHide.bind(this));
+           
         },
         destroyed() {
             window.removeEventListener("scroll", this.handleScroll);
@@ -194,8 +199,12 @@
 
             .main_nav {
                 margin-left: 156px;
+                
 
-                & li {
+                ul {
+                    margin-bottom: 0;
+                } 
+                li {
                     display: inline-block;
                     position: relative;
 

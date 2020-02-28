@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col">					
                     <!-- Product Sorting -->
-                    <div v-if="sortBarActive"  class="sorting_bar d-flex flex-md-row flex-column align-items-md-center justify-content-md-start">
+                    <div class="sorting_bar d-flex flex-md-row flex-column align-items-md-center justify-content-md-start">
                         <div class="results">Showing <span>12</span> results</div>
                         <div class="sorting_container ml-md-auto">
                             <div class="sorting">
@@ -57,14 +57,10 @@
     export default {
         data () {
             return {    
-
             }                
         },
         computed: {
-            ...mapGetters(['posts'], ['sortBar']), 
-            sortBarActive() {
-                return this.sortBar = true;
-            }
+            ...mapGetters(['posts'], ['sortBar'])
         },
         methods: {  
             sortByDefault() {
@@ -76,7 +72,7 @@
             sortByPrice() {
                 this.posts.sort((a, b) => a.price > b.price ? 1 : -1);          
             }
-        },   
+        } 
     }
 </script>
 

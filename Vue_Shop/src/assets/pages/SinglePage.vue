@@ -126,7 +126,7 @@ export default {
   },
   computed: {
     ...mapGetters(['slides']),
-    ...mapGetters(['posts'])        
+    ...mapGetters(['posts'])
   },
 }
 </script>

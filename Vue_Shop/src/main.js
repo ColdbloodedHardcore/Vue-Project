@@ -2,6 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './state/store.js'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 // Pages
 import HomePage from './assets/pages/HomePage.vue'
@@ -45,6 +48,11 @@ Vue.use(VueParallaxJs);
 // Slider
 import VueAgile from 'vue-agile'
 Vue.use(VueAgile)
+
+// Bootstrap 
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
+
 
 
 
