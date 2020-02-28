@@ -77,20 +77,14 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['slides']),
-    ...mapGetters(['posts', 'sortBar']),
-    ...mapGetters(['icons']),             
+    // ...mapGetters(['slides']),
+    // ...mapGetters(['posts']),
+    // ...mapGetters(['icons']),             
   }
 }
 </script>
 
 <style scoped lang="scss">
-  .products {
-    .sorting_bar {
-      display: none !important;
-    }
-  }
-
   .avds {
     position: relative;
     width: 100%;
@@ -100,8 +94,7 @@ export default {
     .avds_container {
       width: 100%;
       height: 490px;
-      padding-left: 60px;
-      padding-right: 60px;
+      padding: 0 60px 100px 60px;
     }
 
     /* Ad Small*/

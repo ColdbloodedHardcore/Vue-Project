@@ -16,6 +16,7 @@ import CheckOutPage from './assets/pages/CheckOutPage.vue'
 
 // Template Parts
 import Header from './assets/templates/Header.vue'
+import SortPanel from './assets/templates/SortPanel.vue'
 import Products from './assets/templates/Products.vue'
 import Newsletter from './assets/templates/Newsletter.vue'
 import IconBox from './assets/templates/IconBox.vue'
@@ -34,6 +35,7 @@ Vue.component('Check', CheckOutPage);
 
 // Template Parts
 Vue.component('SiteHeader', Header);
+Vue.component('Sort', SortPanel);
 Vue.component('Slider', Slider);
 Vue.component('Products', Products);
 Vue.component('Newsletter', Newsletter);

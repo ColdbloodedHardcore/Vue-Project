@@ -63,32 +63,29 @@ const state = {
             title: 'Photo Camera',            
             price: 580
         }
-    ],
-    sortBar: Boolean
+    ]
 }
 
 const getters = {
     posts : state => state.posts,
-    sortBar : state => state.sortBar
+    homePosts: state => {
+        return state.posts = state.posts.slice(0, 8);        
+    },
+    singlePosts: state => {
+        return state.posts = state.posts.slice(0, 4);  
+    }
 }
 
 const mutations = {
     set_posts : (state, payload) => {
         state.posts = payload
-    },
-    set_sortBar : (state, payload) => {
-        state.sortBar = payload
-    },
-
+    }
 }
 
 const actions = {
     set_posts : (context, payload) => {
         context.commit("set_post", payload);
-    },
-    set_sortBar : (context, payload) => {
-        context.commit("set_sortBar", payload);
-    },
+    }
 }
 
 export default {
