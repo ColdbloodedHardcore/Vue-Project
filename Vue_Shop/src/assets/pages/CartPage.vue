@@ -183,17 +183,6 @@ export default {
   methods: {
     incQty () {
       this.$store.commit('incrementQty');  
-
-      let b = [];
-      let c = [];
-      for(let i = 0; i < this.prodPrice.length; i++) {
-          b.push(this.prodPrice[i].id);
-          c.push(this.prodPrice[i].price);
-      }
-      console.log(b, c);
-      
-      
-          
     },
     decQty () {
       this.$store.commit('decrementQty')

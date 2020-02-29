@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col">
           <div class="sorting_bar d-flex flex-md-row flex-column align-items-md-center justify-content-md-start">
-            <div class="results">Showing <span>12</span> results</div>
+            <div class="results">Showing <span>{{postsLength}}</span> results</div>
             <div class="sorting_container ml-md-auto">
               <div class="sorting">
                 <ul class="item_sorting">
@@ -37,17 +37,20 @@
       return {}
     },
     computed: {
-      ...mapGetters(['posts'])
+      ...mapGetters(['posts']),
+      postsLength() {
+        return this.posts.length
+      }
     },
     methods: {
       sortByDefault() {
-        this.posts.sort((a, b) => Math.random() - 0.5);
+        this.$store.commit('sortById');  
       },
       sortByTitle() {
-        this.posts.sort((a, b) => a.title > b.title ? 1 : -1);
+        this.$store.commit('sortByTitle');  
       },
       sortByPrice() {
-        this.posts.sort((a, b) => a.price > b.price ? 1 : -1);
+        this.$store.commit('sortByPrice');  
       }
     }
   }

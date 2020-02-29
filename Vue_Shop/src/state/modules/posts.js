@@ -77,25 +77,36 @@ const state = {
         }
     ],
     homePosts: [],
-    singlePosts: []
+    singlePosts: [],
 }
 
 const getters = {
     posts : state => state.posts,
-    homePosts: state => state.Posts = state.posts.slice(0, 8),
+
+    // Home page posts
+    homePosts: state => state.homePosts = state.posts.slice(0, 8),
+
+    // Single page posts
     singlePosts: state => state.singlePosts = state.posts.sort((a, b) => Math.random() - 0.5).slice(0, 4),
+
 }
 
 const mutations = {
-    set_posts : (state, payload) => {
-        state.posts = payload
-    }
+    set_posts : (state, payload) => state.posts = payload,
+
+    // Sort by id (by default)
+    sortById:  state => state.posts.sort((a, b) => a.id > b.id ? 1 : -1),
+
+    // Sort by title
+    sortByTitle:  state => state.posts.sort((a, b) => a.title > b.title ? 1 : -1),
+
+    // Sort by price
+    sortByPrice:  state => state.posts.sort((a, b) => a.price > b.price ? 1 : -1),    
 }
 
 const actions = {
-    set_posts : (context, payload) => {
-        context.commit("set_post", payload);
-    }
+    set_posts : (context, payload) => context.commit("set_post", payload)
+  
 }
 
 export default {
