@@ -75,17 +75,15 @@ const state = {
             title: 'Photo Camera',            
             price: 580
         }
-    ]
+    ],
+    homePosts: [],
+    singlePosts: []
 }
 
 const getters = {
     posts : state => state.posts,
-    homePosts: state => {
-        return state.posts = state.posts.slice(0, 8);        
-    },
-    singlePosts: state => {
-        return state.posts = state.posts.slice(0, 4);  
-    }
+    homePosts: state => state.Posts = state.posts.slice(0, 8),
+    singlePosts: state => state.singlePosts = state.posts.sort((a, b) => Math.random() - 0.5).slice(0, 4),
 }
 
 const mutations = {

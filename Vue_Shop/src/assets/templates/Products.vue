@@ -1,7 +1,7 @@
 <template>
     <div class="products">
         <div class="container">   
-            <div v-if="homeRoute === true" class="row">
+            <div v-if="$router.history.current.path ==='/'" class="row">
                 <div class="col-lg-3 col-md-3 col-3" 
                     v-for="(post, i) in homePosts"
                     :key="i"
@@ -24,7 +24,7 @@
             </div>
 
             
-            <transition-group v-else-if="categoryRoute === true" class="row" name="flip-list" tag="div">
+            <transition-group v-else-if="$router.history.current.path ==='/category'" class="row" name="flip-list" tag="div">
                 <div class="col-lg-3 col-md-3 col-3" 
                     v-for="post in posts"
                     :key="post.id"
@@ -46,7 +46,7 @@
                 </div>
             </transition-group>
 
-            <div v-else class="row">
+            <div v-else-if="$router.history.current.path ==='/single'" class="row">
                 <div class="col-lg-3 col-md-3 col-3" 
                     v-for="post in singlePosts"
                     :key="post.id"
@@ -77,8 +77,6 @@
     export default {
         data () {
             return {    
-                homeRoute: this.$route.path == "/",
-                categoryRoute: this.$route.path == "/category"
             }                
         },
         computed: {
