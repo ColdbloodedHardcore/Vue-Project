@@ -1,7 +1,7 @@
 <template>
-  <section>
+  <main>
       <!-- Home -->
-      <div class="home">
+      <section class="home">
         <div class="home_container">
           <div class="home_background" style="background-image:url(./src/assets/images/cart/cart_header.jpg)"></div>
           <div class="home_content_container">
@@ -22,10 +22,10 @@
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <!-- Cart Info -->
-      <div class="cart_info">
+      <section class="cart_info">
         <div class="container">
           <div class="row">
             <div class="col">
@@ -67,16 +67,16 @@
                   <div class="product_quantity_container">
                     <div class="product_quantity clearfix">
                       <span>Qty</span>
-                      <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+                      <input type="text" pattern="[0-9]*" :value="product.quantity">
                       <div class="quantity_buttons">
-                        <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
-                        <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+                        <div class="quantity_inc quantity_control" @click="incQty()"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+                        <div  class="quantity_dec quantity_control" @click="decQty()"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <!-- Total -->
-                <div class="cart_item_total">$790.90</div>
+                <div class="cart_item_total">{{ total }}</div>
               </div>
 
             </div>
@@ -156,23 +156,49 @@
             </div>
           </div>
         </div>		
-      </div>
-  </section>
+      </section>
+  </main>
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
 
 export default {
-  name: 'cart',
   data () {
     return {
       
     }
   },
   computed: {
-    ...mapGetters(['products'])         
+    ...mapGetters([
+      'products',
+      'prodPrice',
+      'total'
+    ]),   
+    getBook() {
+        // получаем книгу с id === this.id
+      return this.prodPrice(this.price)
+    } 
   },
+  methods: {
+    incQty () {
+      this.$store.commit('incrementQty');  
+
+      let b = [];
+      let c = [];
+      for(let i = 0; i < this.prodPrice.length; i++) {
+          b.push(this.prodPrice[i].id);
+          c.push(this.prodPrice[i].price);
+      }
+      console.log(b, c);
+      
+      
+          
+    },
+    decQty () {
+      this.$store.commit('decrementQty')
+    }
+  }
 }
 </script>
 

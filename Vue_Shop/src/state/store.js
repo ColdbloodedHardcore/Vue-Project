@@ -4,7 +4,7 @@ import Axios from 'axios'
 import posts from './modules/posts'
 import slides from './modules/slides'
 import icons from './modules/icons'
-import products from './modules/products'
+import cart from './modules/cart'
 
 Vue.use(Vuex);
 
@@ -19,7 +19,7 @@ const store = new Vuex.Store({
     posts,
     slides,
     icons,
-    products
+    cart
   }
 })
 

@@ -1,7 +1,7 @@
 <template>
-  <section>
+  <main>
     <!-- Home -->
-	<div class="home">
+	<section class="home">
 		<div class="home_container">
 			<div class="home_background" style="background-image:url(./src/assets/images/contact_header.jpg)"></div>
 			<div class="home_content_container">
@@ -21,10 +21,10 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 
 	<!-- Contact -->	
-	<div class="contact">
+	<section class="contact">
 		<div class="container">
 			<div class="row">
 
@@ -107,13 +107,12 @@
 				</div>
 			</div>
 		</div>
-	</div>
-  </section>
+	</section>
+  </main>
 </template>
 
 <script>
 export default {
-    name: 'contact',
     data () {
         return {
         

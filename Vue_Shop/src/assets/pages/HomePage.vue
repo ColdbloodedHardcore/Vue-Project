@@ -1,7 +1,7 @@
 <template>
-   <div>
+   <main>
     <!-- Home -->
-     <slider/>
+    <slider/>
 
     <!-- Ads -->
     <section class="avds">
@@ -63,23 +63,19 @@
 
     <!-- Newsletter -->
     <newsletter/>   
-   </div>
+   </main>
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
 
-export default {
-  name: 'home',
+export default {  
   data () {
     return {
-      
     }
   },
   computed: {
-    // ...mapGetters(['slides']),
-    // ...mapGetters(['posts']),
-    // ...mapGetters(['icons']),             
+    ...mapGetters(['homePosts']),          
   }
 }
 </script>

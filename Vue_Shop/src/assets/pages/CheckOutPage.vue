@@ -1,31 +1,31 @@
 <template>
-  <section>
-     <!-- Home -->
-      <div class="home">
+  <main>
+    <!-- Home -->
+    <section class="home">
         <div class="home_container">
-          <div class="home_background" style="background-image:url(./src/assets/images/cart/cart_header.jpg)"></div>
-          <div class="home_content_container">
+            <div class="home_background" style="background-image:url(./src/assets/images/cart/cart_header.jpg)"></div>
+            <div class="home_content_container">
             <div class="container">
-              <div class="row">
+                <div class="row">
                 <div class="col">
-                  <div class="home_content">
+                    <div class="home_content">
                     <div class="breadcrumbs">
-                      <ul>
+                        <ul>
                         <li><router-link to="/">Home</router-link></li>
                         <li><router-link to="/cart">Shopping Cart</router-link></li>
                         <li>Check Out</li>
-                      </ul>
+                        </ul>
                     </div>
-                  </div>
+                    </div>
                 </div>
-              </div>
+                </div>
             </div>
-          </div>
+            </div>
         </div>
-      </div>
+    </section>
 
 	<!-- Checkout -->	
-	<div class="checkout">
+	<section class="checkout">
 		<div class="container">
 			<div class="row">
 
@@ -191,13 +191,12 @@
 				</div>
 			</div>
 		</div>
-	</div>
-  </section>
+	</section>
+  </main>
 </template>
 
 <script>
 export default {
-    name: 'check',
     data () {
         return {
         

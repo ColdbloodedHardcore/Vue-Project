@@ -1,7 +1,7 @@
 <template>
-  <section>
+  <main>
     <!-- Home -->
-    <div class="home">
+    <section class="home">
       <div class="home_container">
         <div class="home_background" style="background-image:url(/src/assets/images/products/products_header.jpg)"></div>
         <div class="home_content_container">
@@ -17,7 +17,7 @@
           </div>
         </div>
       </div>
-	  </div>
+	  </section>
 
     <!-- Sort Bar -->
     <sort/>
@@ -30,21 +30,19 @@
 
     <!-- Newsletter -->
     <newsletter/>   
-  </section>
+  </main>
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
 
 export default {
-  name: 'category',
   data () {
     return {
     }
   },
   computed: {
-    ...mapGetters(['posts']),
-    ...mapGetters(['icons'])           
+    ...mapGetters(['posts'])       
   },
 }
 </script>

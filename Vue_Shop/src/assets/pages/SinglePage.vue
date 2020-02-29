@@ -1,6 +1,6 @@
 <template>
-   <div>
-    <div class="home">
+   <main>
+    <section class="home">
         <div class="home_container">
             <div class="home_background" style="background-image:url(/src/assets/images/products/products_header.jpg)"></div>
             <div class="home_content_container">
@@ -16,10 +16,10 @@
             </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Product Details -->
-	<div class="product_details">
+	<section class="product_details">
 		<div class="container">
 			<div class="row details_row">
 
@@ -56,10 +56,10 @@
 						<div class="product_quantity_container">
 							<div class="product_quantity clearfix">
 								<span>Qty</span>
-								<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+								<input type="text" pattern="[0-9]*" :value="singleQuantity">
 								<div class="quantity_buttons">
-									<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
-									<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+									<div class="quantity_inc quantity_control" @click="incQty()"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+									<div  class="quantity_dec quantity_control" @click="decQty()"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
 								</div>
 							</div>
 							<div class="button cart_button"><a href="#">Add to cart</a></div>
@@ -91,43 +91,50 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 
     <!-- Products -->
-    <div class="products">
+    <section class="products">
         <div class="container">
             <div class="row">
                 <div class="col text-center">
                     <div class="products_title">Related Products</div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <products/>   
-                </div> 
-            </div> 
+
+
+            <products/>  
+            
+             
         </div> 
-    </div> 
+    </section> 
 
     <!-- Newsletter -->
     <newsletter/>   
-   </div>
+   </main>
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
 
-export default {
-  name: 'single',
+export default {  
   data () {
     return {
         
     }
   },
   computed: {
-    ...mapGetters(['slides']),
-    ...mapGetters(['posts'])
+    ...mapGetters(['singleQuantity']),    
   },
+  methods: {
+    incQty () {
+      this.$store.commit('incrementQty');
+      
+    },
+    decQty () {
+      this.$store.commit('decrementQty')
+    }
+  }
 }
 </script>
 

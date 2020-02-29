@@ -1,5 +1,5 @@
 <template>
-    <div class="home">
+    <section class="home">
         <agile :options="options">          
             
             <div class="home_slider_container">
@@ -22,7 +22,7 @@
             </div>            
            
         </agile>
-    </div>
+    </section>
 </template>
 
 <script>

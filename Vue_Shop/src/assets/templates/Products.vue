@@ -1,5 +1,5 @@
 <template>
-    <section class="products">
+    <div class="products">
         <div class="container">   
             <div v-if="homeRoute === true" class="row">
                 <div class="col-lg-3 col-md-3 col-3" 
@@ -27,7 +27,7 @@
             <transition-group v-else-if="categoryRoute === true" class="row" name="flip-list" tag="div">
                 <div class="col-lg-3 col-md-3 col-3" 
                     v-for="post in posts"
-                    :key="post"
+                    :key="post.id"
                     >
 
                     <div class="product">
@@ -68,7 +68,7 @@
                 </div>
             </div>
         </div>    
-    </section>    
+    </div>    
 </template>
 
 <script>

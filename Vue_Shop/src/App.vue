@@ -1,16 +1,12 @@
 <template>
   <div id="shop">   
-    <site-header/>  
-
-    <main>    
+    <site-header/>   
 
       <transition name="fade" mode="out-in">   
 
         <router-view></router-view>
         
       </transition>
-
-    </main>
 
     <site-footer />
   </div>
