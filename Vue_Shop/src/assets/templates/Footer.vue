@@ -4,10 +4,10 @@
       <div class="row">
         <div class="col">
           <div class="footer_content d-flex ">
-            <div class="footer_logo"><a href="#">Sublime.</a></div>
+            <div class="footer_logo"><a href="#">Vue Shop</a></div>
             <div class="copyright ml-auto mr-auto">
               Copyright &copy;2020 All rights reserved | This template is made with
-              <i class="far fa-heart"></i> by <a href="#" target="_blank">Colorlib</a></div>
+              <i class="far fa-heart"></i> by <a href="#" target="_blank">Pop Coren</a></div>
             <div class="footer_social ml-lg-auto">
               <ul>
                 <li><a href="#"><i class="fab fa-pinterest"></i></a></li>

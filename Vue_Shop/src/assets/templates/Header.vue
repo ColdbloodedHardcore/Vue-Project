@@ -5,7 +5,7 @@
                 <div class="col">
                     <div class="header_content d-flex flex-row align-items-center justify-content-start" :style="{'height': scrolled.height}">
                         <div class="logo">
-                            <router-link to="/">Sublime</router-link>
+                            <router-link to="/">Vue Shop</router-link>
                         </div>
 
                         <nav class="main_nav">
@@ -47,7 +47,7 @@
                                         </g>
                                     </svg>
 
-                                    <div>Cart <span>(0)</span></div>
+                                    <div>Cart <span>( {{ cartCount}} )</span></div>
                                 </router-link>
                             </div>
 
@@ -95,78 +95,83 @@
 </template>
 
 <script>
-    export default {     
-        data () {
-            return {
-                navList: [
-                    { url: "/", name: "Home"},
-                    { url: "#", name: "Categories",
-                    children: [
-                        {
-                        url: "/category",
-                        name: "Category"
-                        },
-                        {
-                        url: "/category",
-                        name: "Category"
-                        },
-                        {
-                        url: "/category",
-                        name: "Category"
-                        },
-                        {
-                        url: "/category",
-                        name: "Category"
-                        },
-                        {
-                        url: "/category",
-                        name: "Category"
-                        }
-                    ]},
-                    { url: "/single", name: "Product" },
-                    { url: "/check", name: "Check Out" },
-                    { url: "/contact", name: "Contact" }
-                ],
-                showSearch: false,
-                showDropdown: false,
-                scrolled: {
-                    limitPosition: 70,
-                    height: 130,
-                    lastPosition: 0
-                }                
+import {mapGetters} from 'vuex'
+
+export default {     
+    data () {
+        return {
+            navList: [
+                { url: "/", name: "Home"},
+                { url: "#", name: "Categories",
+                children: [
+                    {
+                    url: "/category",
+                    name: "Category"
+                    },
+                    {
+                    url: "/category",
+                    name: "Category"
+                    },
+                    {
+                    url: "/category",
+                    name: "Category"
+                    },
+                    {
+                    url: "/category",
+                    name: "Category"
+                    },
+                    {
+                    url: "/category",
+                    name: "Category"
+                    }
+                ]},
+                { url: "/single", name: "Product" },
+                { url: "/check", name: "Check Out" },
+                { url: "/contact", name: "Contact" }
+            ],
+            showSearch: false,
+            showDropdown: false,
+            scrolled: {
+                limitPosition: 70,
+                height: 130,
+                lastPosition: 0
+            }                
+        }
+    },
+    computed: {
+        ...mapGetters(['cartCount']),   
+    },
+    methods: {
+        handleScroll() {
+            if (this.scrolled.lastPosition < window.scrollY && this.scrolled.limitPosition < window.scrollY) {
+                this.scrolled.height = 70 + 'px';              
+                // move up!
+            } 
+            
+            if (this.scrolled.lastPosition > window.scrollY) {
+                this.scrolled.height = 130 + 'px';
+                // move down
             }
+            
+            this.scrolled.lastPosition = window.scrollY;
+            // this.scrolled = window.scrollY > 250;
         },
-        methods: {
-            handleScroll() {
-                if (this.scrolled.lastPosition < window.scrollY && this.scrolled.limitPosition < window.scrollY) {
-                    this.scrolled.height = 70 + 'px';              
-                    // move up!
-                } 
-                
-                if (this.scrolled.lastPosition > window.scrollY) {
-                    this.scrolled.height = 130 + 'px';
-                    // move down
-                }
-                
-                this.scrolled.lastPosition = window.scrollY;
-                // this.scrolled = window.scrollY > 250;
-            },
-            dropShow() {
-                this.showDropdown = !this.showDropdown; 
-            },
-            dropHide() {
-                this.showDropdown =  false;
-            }
+        dropShow() {
+            this.showDropdown = !this.showDropdown; 
         },
-        created() {
-            window.addEventListener("scroll", this.handleScroll);
-            document.addEventListener('click', this.dropHide.bind(this));
-           
-        },
-        destroyed() {
-            window.removeEventListener("scroll", this.handleScroll);
-        }        
-    }
+        dropHide() {
+            this.showDropdown =  false;
+        }
+    },
+    created() {
+        window.addEventListener("scroll", this.handleScroll);
+        document.addEventListener('click', this.dropHide.bind(this));
+        
+    },
+    destroyed() {
+        window.removeEventListener("scroll", this.handleScroll);
+    }        
+}
 </script>
 
 <style scoped lang="scss">

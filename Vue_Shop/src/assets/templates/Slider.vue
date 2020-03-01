@@ -12,7 +12,7 @@
                                     <div class="home_slider_content">
                                         <div class="home_slider_title">{{ slide.title }}</div>
                                         <div class="home_slider_subtitle">{{ slide.subtitle }}</div>
-                                        <div class="button button_light home_button"><a href="#">Shop Now</a></div>
+                                        <div class="button button_light home_button"><router-link to="/category">Shop Now</router-link></div>
                                     </div>
                                 </div>
                             </div>

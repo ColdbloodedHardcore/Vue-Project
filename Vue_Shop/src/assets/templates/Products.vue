@@ -3,44 +3,43 @@
         <div class="container">   
             <div v-if="$router.history.current.path ==='/'" class="row">
                 <div class="col-lg-3 col-md-3 col-3" 
-                    v-for="(post, i) in homePosts"
+                    v-for="(item, i) in homeItems"
                     :key="i"
                     >
 
                     <div class="product">
                         <div class="product_image">
-                            <img :src="post.src">
+                            <img :src="item.src">
                         </div>                    
 
                         <div class="product_content">
                             <div class="product_title">
-                                <a href="#">{{ post.title }}</a>
+                                <router-link to="/category">{{ item.title }}</router-link>
                             </div>
 
-                            <div class="product_price">{{ post.price }}$</div>                                  
+                            <div class="product_price">{{ item.price }}$</div>                                  
                         </div>
                     </div>
                 </div>
             </div>
-
             
             <transition-group v-else-if="$router.history.current.path ==='/category'" class="row" name="flip-list" tag="div">
                 <div class="col-lg-3 col-md-3 col-3" 
-                    v-for="post in posts"
-                    :key="post.id"
+                    v-for="item in items"
+                    :key="item.id"
                     >
 
                     <div class="product">
                         <div class="product_image">
-                            <img :src="post.src">
+                            <img :src="item.src">
                         </div>                    
 
                         <div class="product_content">
                             <div class="product_title">
-                                <a href="#">{{ post.title }}</a>
+                                <router-link to="/category">{{ item.title }}</router-link>
                             </div>
 
-                            <div class="product_price">{{ post.price }}$</div>                                  
+                            <div class="product_price">{{ item.price }}$</div>                                  
                         </div>
                     </div>
                 </div>
@@ -48,21 +47,21 @@
 
             <div v-else-if="$router.history.current.path ==='/single'" class="row">
                 <div class="col-lg-3 col-md-3 col-3" 
-                    v-for="post in singlePosts"
-                    :key="post.id"
+                    v-for="item in singleItems"
+                    :key="item.id"
                     >
 
                     <div class="product">
                         <div class="product_image">
-                            <img :src="post.src">
+                            <img :src="item.src">
                         </div>                    
 
                         <div class="product_content">
                             <div class="product_title">
-                                <a href="#">{{ post.title }}</a>
+                                <router-link to="/category">{{ item.title }}</router-link>
                             </div>
 
-                            <div class="product_price">{{ post.price }}$</div>                                  
+                            <div class="product_price">{{ item.price }}$</div>                                  
                         </div>
                     </div>
                 </div>
@@ -81,9 +80,9 @@
         },
         computed: {
             ...mapGetters([
-                'posts',
-                'homePosts',
-                'singlePosts'
+                'items',
+                'homeItems',
+                'singleItems'
             ])
         }
     }

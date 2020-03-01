@@ -20,7 +20,7 @@
             </div>
             <div class="avds_small_content">
               <div class="avds_title">Smart Phones</div>
-              <div class="avds_link"><a href="#">See More</a></div>
+              <div class="avds_link"><router-link to="/category">See More</router-link></div>
             </div>
           </div>
         </div>
@@ -30,7 +30,7 @@
             <div class="avds_large_content">
               <div class="avds_title">Professional Cameras</div>
               <div class="avds_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viver ra velit venenatis fermentum luctus.</div>
-              <div class="avds_link avds_link_large"><a href="#">See More</a></div>
+              <div class="avds_link avds_link_large"><router-link to="/category">See More</router-link></div>
             </div>
           </div>
         </div>
@@ -50,7 +50,7 @@
               <div class="avds_xl_content">
                 <div class="avds_title">Amazing Devices</div>
                 <div class="avds_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus.</div>
-                <div class="avds_link avds_xl_link"><a href="#">See More</a></div>
+                <div class="avds_link avds_xl_link"><router-link to="/category">See More</router-link></div>
               </div>
             </div>
           </div>
@@ -67,16 +67,11 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
-
 export default {  
   data () {
     return {
     }
   },
-  computed: {
-    ...mapGetters(['homePosts']),          
-  }
 }
 </script>
 

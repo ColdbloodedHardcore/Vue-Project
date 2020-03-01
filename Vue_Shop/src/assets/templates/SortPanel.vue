@@ -28,18 +28,16 @@
 </template>
 
 <script>
-  import {
-    mapGetters
-  } from 'vuex'
+  import {mapGetters} from 'vuex'
 
   export default {
     data() {
       return {}
     },
     computed: {
-      ...mapGetters(['posts']),
+      ...mapGetters(['items']),
       postsLength() {
-        return this.posts.length
+        return this.items.length
       }
     },
     methods: {
@@ -52,7 +50,7 @@
       sortByPrice() {
         this.$store.commit('sortByPrice');  
       }
-    }
+    },
   }
 
 </script>

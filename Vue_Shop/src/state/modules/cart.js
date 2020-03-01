@@ -1,74 +1,58 @@
 import Axios from 'axios'
+import Vue from 'vue'
+
+let cart = window.localStorage.getItem('cart');
+let cartCount = window.localStorage.getItem('cartCount');
 
 const state = {
-    products: [ 
-        {   
-            id: 1,
-            image: require ('../../assets/images/cart/cart_1.jpg'),
-            name: 'Smart Phone Deluxe Edition',
-            edit: 'Edit Product',
-            price: 790,
-            quantity: 0,
-        },
-        {   
-            id: 2,
-            image: require ('../../assets/images/products/product_2.jpg'),
-            name: 'Speakers',
-            edit: 'Edit Product',
-            price: 520 ,
-            quantity: 0,
-        },
-        {   
-            id: 3,
-            image: require ('../../assets/images/products/product_3.jpg'),
-            name: 'Accessories',
-            edit: 'Edit Product',
-            price: 710,
-            quantity: 0,
-        }                   
-    ],
-    singleQuantity: 0,
-    total: 0
+    cart: cart ? JSON.parse(cart) : [],
+    cartCount: cartCount ? parseInt(cartCount) : 0,
 }
 
-const getters = {
-    products : state => state.products,  
-    singleQuantity : state => state.singleQuantity,
-    prodPrice: state => state.products.filter(products => products.price), 
-    total : state => state.total,
+const getters = { 
+    cart: state => state.cart,
+    cartCount: state => state.cartCount,
 }
 
 const mutations = {
-    set_products : (state, payload) => {
-        state.products = payload
+    set_cart : (state, payload) => {
+        state.cart = payload
     },
-    set_quantity : (state, payload) => {
-        state.quantity = payload
+    set_cartCount : (state, payload) => {
+        state.cartCount = payload
     },
-    set_total : (state, payload) => {
-        state.total = payload
+    addToCart(state, item) {
+        state.cart.push(item);
+
+        let found = state.cart.find(item => item.id === item.id);
+
+        if (found) {
+            found.quantity ++;
+            found.totalPrice = found.quantity * found.price;
+        } else {
+            state.cart.push(item);
+
+            Vue.set(item, 'quantity', 1);
+            Vue.set(item, 'totalPrice', item.price);
+        }
+        state.cartCount++;
+
+        this.commit('saveCart');
     },
+    removeFromCart(state) {
+        state.cart.splice(0, state.cart.length);       
 
-    // Single page Qty
-    incrementQty: state => state.singleQuantity++,
-    decrementQty: state => state.singleQuantity--,
-
-    // Total 
-    // incrementTotal: state => state.total = ,
-    // decrementTotal: state => state.total = ,
-
-    
+        this.commit('saveCart');
+    },
+    saveCart(state) {
+        window.localStorage.setItem('cart', JSON.stringify(state.cart));
+        window.localStorage.setItem('cartCount', state.cartCount);
+    }    
 }
 
 const actions = {
-    set_products : (context, payload) => {
-        context.commit("SET_PRODUCTS", payload);
-    },
-    set_quantity : (context, payload) => {
-        context.commit("SET_QUANTITY", payload);
-    },
-    set_total : (context, payload) => {
-        context.commit("SET_TOTAL", payload);
+    set_cart : (context, payload) => {
+        context.commit("SET_CART", payload);
     },
 }
 

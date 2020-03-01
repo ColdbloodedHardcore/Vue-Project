@@ -43,31 +43,30 @@
 
               <!-- Cart Item -->
               <div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start"
-                        v-for="product in products"
-                        :key="product.id">
+                        v-for="item in cart"
+                        :key="item.id">
                 <!-- Name -->
                 <div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
                         
                   <div class="cart_item_image">
-                    <div><img :src="product.image" alt=""></div>
+                    <div><img :src="item.src" alt=""></div>
                   </div>
 
                   <div class="cart_item_name_container">
-                    <div class="cart_item_name"><a href="#">{{ product.name }}</a></div>
-                    <div class="cart_item_edit"><a href="#">{{ product.edit }}</a></div>
+                    <div class="cart_item_name"><a href="#">{{ item.title }}</a></div>
                   </div>
                 </div>
 
 
                 <!-- Price -->
-                <div class="cart_item_price">${{ product.price }}</div>
+                <div class="cart_item_price">${{ item.price }}</div>
                 
                 <!-- Quantity -->
                 <div class="cart_item_quantity">
                   <div class="product_quantity_container">
                     <div class="product_quantity clearfix">
                       <span>Qty</span>
-                      <input type="text" pattern="[0-9]*" :value="product.quantity">
+                      <input type="text" pattern="/[0-9]*" :value="item.quantity">
                       <div class="quantity_buttons">
                         <div class="quantity_inc quantity_control" @click="incQty()"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
                         <div  class="quantity_dec quantity_control" @click="decQty()"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
@@ -76,7 +75,7 @@
                   </div>
                 </div>
                 <!-- Total -->
-                <div class="cart_item_total">{{ total }}</div>
+                <div class="cart_item_total">{{ item.total }}</div>
               </div>
 
             </div>
@@ -84,9 +83,9 @@
           <div class="row row_cart_buttons">
             <div class="col">
               <div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
-                <div class="button continue_shopping_button"><a href="#">Continue shopping</a></div>
+                <div class="button continue_shopping_button"><router-link to="/category">Continue shopping</router-link></div>
                 <div class="cart_buttons_right ml-lg-auto">
-                  <div class="button clear_cart_button"><a href="#">Clear cart</a></div>
+                  <div class="button clear_cart_button"><a href="#" @click.prevent="removeFromCart()">Clear cart</a></div>
                   <div class="button update_cart_button"><a href="#">Update cart</a></div>
                 </div>
               </div>
@@ -161,7 +160,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 
 export default {
   data () {
@@ -170,22 +169,20 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'products',
-      'prodPrice',
-      'total'
-    ]),   
-    getBook() {
-        // получаем книгу с id === this.id
-      return this.prodPrice(this.price)
-    } 
+    ...mapGetters(['cart']),
+    totalPrice() {
+        let total = 0;
+
+        for (let item of this.$store.state.cart) {
+            total += item.totalPrice;
+        }
+
+        return total.toFixed(2);
+    }
   },
   methods: {
-    incQty () {
-      this.$store.commit('incrementQty');  
-    },
-    decQty () {
-      this.$store.commit('decrementQty')
+     removeFromCart() {
+        this.$store.commit('removeFromCart');
     }
   }
 }
