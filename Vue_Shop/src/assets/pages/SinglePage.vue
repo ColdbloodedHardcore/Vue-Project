@@ -21,13 +21,13 @@
     <!-- Product Details -->
 	<section class="product_details">
 		<div class="container">
-			<div class="row details_row" v-for="(item, i) in items" :key="i">
+			<div class="row details_row" v-for="(product, i) in products" :key="i">
 
 				<!-- Product Image -->
 				<div class="col-lg-6">
                 
 					<div class="details_image">
-						<div class="details_image_large"><img :src="item.src" alt=""><div class="product_extra product_new"><a href="#">New</a></div></div>
+						<div class="details_image_large"><img :src="product.src" alt=""><div class="product_extra product_new"><a href="#">New</a></div></div>
 						<div class="details_image_thumbnails d-flex flex-row align-items-start justify-content-between">
 							<div class="details_image_thumbnail active"><img src="/src/assets/images/single_page/details_1.jpg" alt=""></div>
 							<div class="details_image_thumbnail"><img src="/src/assets/images/single_page/details_2.jpg" alt=""></div>
@@ -40,9 +40,9 @@
 				<!-- Product Content -->
 				<div class="col-lg-6">
 					<div class="details_content">
-						<div class="details_name">{{ item.title }}</div>
+						<div class="details_name">{{ product.title }}</div>
 						<div class="details_discount">$890</div>
-						<div class="details_price">${{ item.price }}</div>
+						<div class="details_price">${{ product.price }}</div>
 
 						<!-- In Stock -->
 						<div class="in_stock_container">
@@ -59,11 +59,11 @@
 								<span>Qty</span>
 								<input type="text" pattern="[0-9]*" value="0">
 								<div class="quantity_buttons">
-									<div class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
-									<div  class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+									<!-- <div class="quantity_inc quantity_control" @click="incQty()"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+									<div  class="quantity_dec quantity_control" @click="decQty()"><i class="fa fa-chevron-down" aria-hidden="true"></i></div> -->
 								</div>
 							</div>
-							<div class="button cart_button"><a type="button" @click="addToCart(item)">Add to cart</a></div>
+							<div class="button cart_button"><a type="button" @click="addToCart(product)">Add to cart</a></div>
 						</div>
 
 						<!-- Share -->
@@ -126,19 +126,19 @@ export default {
   },
   computed: {
     ...mapGetters([
-        'items'
+        'products'
     ]),    
   },
   methods: {
-    addToCart(item) {
-        this.$store.commit('addToCart', item);
+    addToCart(product) {
+        this.$store.commit('addToCart', product);
     },
-    incQty () {
-      this.$store.commit('incrementQty');      
-    },
-    decQty () {
-      this.$store.commit('decrementQty')
-    },    
+    // incQty () {
+    //   this.$store.commit('incrementQty');      
+    // },
+    // decQty () {
+    //   this.$store.commit('decrementQty')
+    // },    
   }
 }
 </script>

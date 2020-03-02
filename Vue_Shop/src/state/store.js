@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Axios from 'axios'
-import posts from './modules/posts'
+import products from './modules/products'
 import slides from './modules/slides'
 import icons from './modules/icons'
 import cart from './modules/cart'
@@ -16,7 +16,7 @@ const store = new Vuex.Store({
   actions:{},
   
   modules : {
-    posts,
+    products,
     slides,
     icons,
     cart

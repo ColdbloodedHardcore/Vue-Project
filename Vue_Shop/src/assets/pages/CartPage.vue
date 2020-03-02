@@ -68,14 +68,15 @@
                       <span>Qty</span>
                       <input type="text" pattern="/[0-9]*" :value="item.quantity">
                       <div class="quantity_buttons">
-                        <div class="quantity_inc quantity_control" @click="incQty()"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
-                        <div  class="quantity_dec quantity_control" @click="decQty()"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+                        <div class="quantity_inc quantity_control"  pattern="[0-9]{3}" @click="incQty(item)"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+                        <div  class="quantity_dec quantity_control"  pattern="[0-9]{3}" @click="decQty(item)"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <!-- Total -->
-                <div class="cart_item_total">{{ item.total }}</div>
+                <div class="cart_item_total">{{ item.totalPrice }}</div>
+                <i class="far fa-window-close" @click="removeFromCart(item)"></i>
               </div>
 
             </div>
@@ -85,8 +86,7 @@
               <div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
                 <div class="button continue_shopping_button"><router-link to="/category">Continue shopping</router-link></div>
                 <div class="cart_buttons_right ml-lg-auto">
-                  <div class="button clear_cart_button"><a href="#" @click.prevent="removeFromCart()">Clear cart</a></div>
-                  <div class="button update_cart_button"><a href="#">Update cart</a></div>
+                  <div class="button clear_cart_button"><a href="#" @click="clearCart()">Clear cart</a></div>
                 </div>
               </div>
             </div>
@@ -133,7 +133,7 @@
             <div class="col-lg-6 offset-lg-2">
               <div class="cart_total">
                 <div class="section_title">Cart total</div>
-                <div class="section_subtitle">Final info</div>
+                <!-- <div class="section_total">{{ cart.price.toFixed(2) }}</div> -->
                 <div class="cart_total_container">
                   <ul>
                     <li class="d-flex flex-row align-items-center justify-content-start">
@@ -170,20 +170,29 @@ export default {
   },
   computed: {
     ...mapGetters(['cart']),
-    totalPrice() {
-        let total = 0;
+    // totalPrice() {
+    //     let total = 0;
 
-        for (let item of this.$store.state.cart) {
-            total += item.totalPrice;
-        }
+    //     for (let item of this.$store.state.cart) {
+    //         total += item.totalPrice;
+    //     }
 
-        return total.toFixed(2);
-    }
+    //     return total.toFixed(2);
+    // }
   },
   methods: {
-     removeFromCart() {
-        this.$store.commit('removeFromCart');
-    }
+    incQty(item) {
+      this.$store.commit('incQty');
+    },
+    decQty(item) {
+      this.$store.commit('decQty');
+    },
+    removeFromCart(item) {
+      this.$store.commit('removeFromCart', item);
+    },
+    clearCart() {
+      this.$store.commit('clearCart');
+    },    
   }
 }
 </script>
@@ -403,7 +412,7 @@ export default {
 
           input {
             display: block;
-            width: 30px;
+            width: 65px;
             height: 57px;
             border: none;
             outline: none;
@@ -488,6 +497,20 @@ export default {
           color: #1b1b1b;
         }
       }
+
+      .fa-window-close {
+        position: absolute;
+        top: 14%;
+        right: 0;
+        font-size: 20px;
+        cursor: pointer;
+        color: #aaa;
+        transition: all 0.6s;
+
+        &:hover {
+          color: #000;
+        }
+      }
     }
     
     .row_cart_buttons {
@@ -501,17 +524,12 @@ export default {
         }
       }
 
-      .clear_cart_button,
-      .update_cart_button {
+      .clear_cart_button {
         display: inline-block;
 
         &::after {
           background-color: #000;
         }
-      }
-
-      .update_cart_button {
-        margin-left: 16px;
       }
     }
 

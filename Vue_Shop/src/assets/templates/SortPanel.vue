@@ -35,9 +35,9 @@
       return {}
     },
     computed: {
-      ...mapGetters(['items']),
+      ...mapGetters(['products']),
       postsLength() {
-        return this.items.length
+        return this.products.length
       }
     },
     methods: {

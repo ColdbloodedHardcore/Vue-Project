@@ -3,21 +3,21 @@
         <div class="container">   
             <div v-if="$router.history.current.path ==='/'" class="row">
                 <div class="col-lg-3 col-md-3 col-3" 
-                    v-for="(item, i) in homeItems"
+                    v-for="(product, i) in homeProducts"
                     :key="i"
                     >
 
                     <div class="product">
                         <div class="product_image">
-                            <img :src="item.src">
+                            <img :src="product.src">
                         </div>                    
 
                         <div class="product_content">
                             <div class="product_title">
-                                <router-link to="/category">{{ item.title }}</router-link>
+                                <router-link to="/category">{{ product.title }}</router-link>
                             </div>
 
-                            <div class="product_price">{{ item.price }}$</div>                                  
+                            <div class="product_price">{{ product.price }}$</div>                                  
                         </div>
                     </div>
                 </div>
@@ -25,21 +25,21 @@
             
             <transition-group v-else-if="$router.history.current.path ==='/category'" class="row" name="flip-list" tag="div">
                 <div class="col-lg-3 col-md-3 col-3" 
-                    v-for="item in items"
-                    :key="item.id"
+                    v-for="product in products"
+                    :key="product.id"
                     >
 
                     <div class="product">
                         <div class="product_image">
-                            <img :src="item.src">
+                            <img :src="product.src">
                         </div>                    
 
                         <div class="product_content">
                             <div class="product_title">
-                                <router-link to="/category">{{ item.title }}</router-link>
+                                <router-link to="/category">{{ product.title }}</router-link>
                             </div>
 
-                            <div class="product_price">{{ item.price }}$</div>                                  
+                            <div class="product_price">{{ product.price }}$</div>                                  
                         </div>
                     </div>
                 </div>
@@ -47,21 +47,21 @@
 
             <div v-else-if="$router.history.current.path ==='/single'" class="row">
                 <div class="col-lg-3 col-md-3 col-3" 
-                    v-for="item in singleItems"
-                    :key="item.id"
+                    v-for="product in singleProducts"
+                    :key="product.id"
                     >
 
                     <div class="product">
                         <div class="product_image">
-                            <img :src="item.src">
+                            <img :src="product.src">
                         </div>                    
 
                         <div class="product_content">
                             <div class="product_title">
-                                <router-link to="/category">{{ item.title }}</router-link>
+                                <router-link to="/category">{{ product.title }}</router-link>
                             </div>
 
-                            <div class="product_price">{{ item.price }}$</div>                                  
+                            <div class="product_price">{{ product.price }}$</div>                                  
                         </div>
                     </div>
                 </div>
@@ -80,9 +80,9 @@
         },
         computed: {
             ...mapGetters([
-                'items',
-                'homeItems',
-                'singleItems'
+                'products',
+                'homeProducts',
+                'singleProducts'
             ])
         }
     }
