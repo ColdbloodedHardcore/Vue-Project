@@ -182,10 +182,10 @@ export default {
   },
   methods: {
     incQty(item) {
-      this.$store.commit('incQty');
+      this.$store.commit('incQty', item);
     },
     decQty(item) {
-      this.$store.commit('decQty');
+      this.$store.commit('decQty', item);
     },
     removeFromCart(item) {
       this.$store.commit('removeFromCart', item);

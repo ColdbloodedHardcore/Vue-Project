@@ -24,18 +24,17 @@ const mutations = {
 
     // Item quantity
     incQty(state, item) {
-        let found = state.cart.find(item => item.id == item.id);
+        let found = state.cart.find(product => product.id == item.id);
 
         if (found) {            
             found.quantity ++;
             found.totalPrice = found.quantity * found.price;
         } 
-        state.cartCount++;
-        console.log(cart);
-        this.commit('saveCart');
+        state.cartCount++; 
+        this.commit('saveCart');      
     },
     decQty(state, item) {
-        let found = state.cart.find(item => item.id == item.id);
+        let found = state.cart.find(product => product.id == item.id);
 
         if (found) {            
             found.quantity --;
@@ -47,7 +46,6 @@ const mutations = {
 
     // Add to cart
     addToCart(state, item)  {
-
         let found = state.cart.find(product => product.id == item.id);
 
         if (found) {            
@@ -60,7 +58,6 @@ const mutations = {
             Vue.set(item, 'totalPrice', item.price);
         }
         state.cartCount++;
-
         this.commit('saveCart');
     },
 
