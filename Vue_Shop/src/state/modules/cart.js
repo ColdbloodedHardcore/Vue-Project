@@ -3,15 +3,37 @@ import Vue from 'vue'
 
 let cart = window.localStorage.getItem('cart');
 let cartCount = window.localStorage.getItem('cartCount');
+let order = window.localStorage.getItem('order');
 
 const state = {
     cart: cart ? JSON.parse(cart) : [],
     cartCount: cartCount ? parseInt(cartCount) : 0,
+    cartTotal: 0,
+    shipping: [
+        {
+            title: 'Next day delivery',
+            price: 4.99,
+        },
+        {
+            title: 'Standard delivery',
+            price: 1.99,
+        },
+        {
+            title: 'Personal pickup',
+            price: 0,
+        }
+    ],
+    shippingTotal: 0,
+    order: order ? (parseInt(order * 100)) / 100 : 0,
 }
 
 const getters = { 
     cart: state => state.cart,
     cartCount: state => state.cartCount,
+    cartTotal: state => state.cartTotal = Object.keys(state.cart).reduce((total, item) => total + state.cart[item].totalPrice, 0),
+    shipping: state => state.shipping,
+    shippingTotal: state => state.shippingTotal,
+    order: state => state.cartTotal + state.shippingTotal
 }
 
 const mutations = {
@@ -21,7 +43,14 @@ const mutations = {
     set_cartCount : (state, payload) => {
         state.cartCount = payload
     },
+    shippingPrice(state, ship) {
+        let found = state.shipping.find(a => a.price == ship.price);              
 
+        if (found) {
+            state.shippingTotal = ship.price;
+            this.commit('saveCart');            
+        }                   
+    },
     // Item quantity
     incQty(state, item) {
         let found = state.cart.find(product => product.id == item.id);
@@ -85,6 +114,7 @@ const mutations = {
     saveCart: state => {
         window.localStorage.setItem('cart', JSON.stringify(state.cart));
         window.localStorage.setItem('cartCount', state.cartCount);
+        window.localStorage.setItem('order', state.order);
     },
     
 }

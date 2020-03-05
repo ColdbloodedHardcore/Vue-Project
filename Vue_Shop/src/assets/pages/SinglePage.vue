@@ -24,8 +24,7 @@
 			<div class="row details_row" v-for="(product, i) in products" :key="i">
 
 				<!-- Product Image -->
-				<div class="col-lg-6">
-                
+				<div class="col-lg-6">                
 					<div class="details_image">
 						<div class="details_image_large"><img :src="product.src" alt=""><div class="product_extra product_new"><a href="#">New</a></div></div>
 						<div class="details_image_thumbnails d-flex flex-row align-items-start justify-content-between">
@@ -42,7 +41,7 @@
 					<div class="details_content">
 						<div class="details_name">{{ product.title }}</div>
 						<div class="details_discount">$890</div>
-						<div class="details_price">${{ product.price }}</div>
+						<div class="details_price">${{ product.price.toFixed(2) }}</div>
 
 						<!-- In Stock -->
 						<div class="in_stock_container">

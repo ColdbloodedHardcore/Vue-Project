@@ -27,7 +27,7 @@ ul {
   list-style: none;  
 }
 
-div {
+div, button {
   position: relative;
 }
 

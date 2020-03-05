@@ -149,15 +149,15 @@
 								</li>
 								<li class="d-flex flex-row align-items-center justify-content-start">
 									<div class="order_list_title">Subtotal</div>
-									<div class="order_list_value ml-auto">$59.90</div>
+									<div class="order_list_value ml-auto">${{ cartTotal.toFixed(2) }}</div>
 								</li>
 								<li class="d-flex flex-row align-items-center justify-content-start">
 									<div class="order_list_title">Shipping</div>
-									<div class="order_list_value ml-auto">Free</div>
+									<div class="order_list_value ml-auto">{{ shippingTotal.toFixed(2) }}</div>
 								</li>
 								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="order_list_title">Total</div>
-									<div class="order_list_value ml-auto">$59.90</div>
+									<div class="order_list_title">Total Order</div>
+									<div class="order_list_value ml-auto">$ {{ order.toFixed(2) }}</div>
 								</li>
 							</ul>
 						</div>
@@ -196,12 +196,17 @@
 </template>
 
 <script>
+import {mapGetters, mapActions} from 'vuex'
+
 export default {
     data () {
         return {
         
         }
-    }
+    },
+    computed: {
+    ...mapGetters(['cart', 'cartTotal', 'shipping', 'shippingTotal', 'order']),
+  },
 }
 </script>
 

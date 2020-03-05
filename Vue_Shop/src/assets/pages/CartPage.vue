@@ -59,7 +59,7 @@
 
 
                 <!-- Price -->
-                <div class="cart_item_price">${{ item.price }}</div>
+                <div class="cart_item_price">${{ item.price.toFixed(2) }}</div>
                 
                 <!-- Quantity -->
                 <div class="cart_item_quantity">
@@ -75,7 +75,7 @@
                   </div>
                 </div>
                 <!-- Total -->
-                <div class="cart_item_total">{{ item.totalPrice }}</div>
+                <div class="cart_item_total">{{ item.totalPrice.toFixed(2) }}</div>
                 <i class="far fa-window-close" @click="removeFromCart(item)"></i>
               </div>
 
@@ -99,20 +99,14 @@
                 <div class="section_title">Shipping method</div>
                 <div class="section_subtitle">Select the one you want</div>
                 <div class="delivery_options">
-                  <label class="delivery_option clearfix">Next day delivery
-                    <input type="radio" name="radio">
+
+                  <label class="delivery_option clearfix"
+                  v-for="(ship, index) in shipping" :key="ship.id"
+                  >
+                    {{ ship.title }}
+                    <input type="radio" name="radio" :id="index" @change="shippingPrice(ship), radio()">
                     <span class="checkmark"></span>
-                    <span class="delivery_price">$4.99</span>
-                  </label>
-                  <label class="delivery_option clearfix">Standard delivery
-                    <input type="radio" name="radio">
-                    <span class="checkmark"></span>
-                    <span class="delivery_price">$1.99</span>
-                  </label>
-                  <label class="delivery_option clearfix">Personal pickup
-                    <input type="radio" checked="checked" name="radio">
-                    <span class="checkmark"></span>
-                    <span class="delivery_price">Free</span>
+                    <span class="delivery_price">${{ ship.price }}</span>
                   </label>
                 </div>
               </div>
@@ -132,25 +126,28 @@
 
             <div class="col-lg-6 offset-lg-2">
               <div class="cart_total">
-                <div class="section_title">Cart total</div>
-                <!-- <div class="section_total">{{ cart.price.toFixed(2) }}</div> -->
+                <div class="cart_total__title d-flex justify-content-between">
+                  <div class="section_title">Cart total</div>
+                  <div class="section_total">{{ cartTotal.toFixed(2) }}$</div>
+                </div>                
+
                 <div class="cart_total_container">
                   <ul>
                     <li class="d-flex flex-row align-items-center justify-content-start">
                       <div class="cart_total_title">Subtotal</div>
-                      <div class="cart_total_value ml-auto">$790.90</div>
+                      <div class="cart_total_value ml-auto">${{ cartTotal.toFixed(2) }}</div>
                     </li>
                     <li class="d-flex flex-row align-items-center justify-content-start">
                       <div class="cart_total_title">Shipping</div>
-                      <div class="cart_total_value ml-auto">Free</div>
+                      <div class="cart_total_value ml-auto">${{ shippingTotal }}</div>
                     </li>
                     <li class="d-flex flex-row align-items-center justify-content-start">
-                      <div class="cart_total_title">Total</div>
-                      <div class="cart_total_value ml-auto">$790.90</div>
+                      <div class="cart_total_title">Total Order</div>
+                      <div class="cart_total_value ml-auto">${{ order.toFixed(2) }}</div>
                     </li>
                   </ul>
                 </div>
-                <div class="button checkout_button"><a href="#">Proceed to checkout</a></div>
+                <button class="button checkout_button" :disabled="disabled" @click="$router.push('check')">Proceed to checkout</button> 
               </div>
             </div>
           </div>
@@ -160,25 +157,16 @@
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   data () {
     return {
-      
+      disabled: true
     }
   },
   computed: {
-    ...mapGetters(['cart']),
-    // totalPrice() {
-    //     let total = 0;
-
-    //     for (let item of this.$store.state.cart) {
-    //         total += item.totalPrice;
-    //     }
-
-    //     return total.toFixed(2);
-    // }
+    ...mapGetters(['cart', 'cartTotal', 'shipping', 'shippingTotal', 'order']),
   },
   methods: {
     incQty(item) {
@@ -192,7 +180,19 @@ export default {
     },
     clearCart() {
       this.$store.commit('clearCart');
-    },    
+    },
+    shippingPrice(ship) {
+      this.$store.commit('shippingPrice', ship);
+    },
+    radio() {
+      let radio = document.querySelectorAll('input[type=radio]');
+      
+      for (let i = 0; i < radio.length; i++) {
+        if(radio[i].id != '') {
+          this.disabled = false;
+        }
+      }
+    }
   }
 }
 </script>
@@ -662,6 +662,11 @@ export default {
       }
 
       .cart_total {
+
+        .section_total {
+          font-size: 24px;
+        }
+
         &_container {
           margin-top: 42px;
           padding-left: 45px;
@@ -694,9 +699,27 @@ export default {
 
         .checkout_button {
           width: 100%;
+          display: block;
+          position: relative;
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 57px;
+          color: #1b1b1b;
+          background: none;
+          -webkit-transition: all .6s ease;
+          -moz-transition: all .6s ease;
+          -ms-transition: all .6s ease;
+          -o-transition: all .6s ease;
+          transition: all .6s ease;
+
+          &:hover {
+            color: #fff;
+             z-index: 1;
+          }
 
           &::after {
             background-color: #000;
+            z-index: -1;
           }
         }
       }

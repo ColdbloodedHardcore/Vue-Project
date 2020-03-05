@@ -17,7 +17,7 @@
                                 <router-link to="/category">{{ product.title }}</router-link>
                             </div>
 
-                            <div class="product_price">{{ product.price }}$</div>                                  
+                            <div class="product_price">{{ product.price.toFixed(2) }}$</div>                                  
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                                 <router-link to="/category">{{ product.title }}</router-link>
                             </div>
 
-                            <div class="product_price">{{ product.price }}$</div>                                  
+                            <div class="product_price">{{ product.price.toFixed(2) }}$</div>                                  
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                                 <router-link to="/category">{{ product.title }}</router-link>
                             </div>
 
-                            <div class="product_price">{{ product.price }}$</div>                                  
+                            <div class="product_price">{{ product.price.toFixed(2) }}$</div>                                  
                         </div>
                     </div>
                 </div>
