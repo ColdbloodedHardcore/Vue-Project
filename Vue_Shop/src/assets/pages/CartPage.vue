@@ -66,10 +66,10 @@
                   <div class="product_quantity_container">
                     <div class="product_quantity clearfix">
                       <span>Qty</span>
-                      <input type="text" pattern="/[0-9]*" :value="item.quantity">
+                      <input type="number" :id="item.id" :value="item.quantity" @input="inputQty(item)">
                       <div class="quantity_buttons">
-                        <div class="quantity_inc quantity_control"  pattern="[0-9]{3}" @click="incQty(item)"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
-                        <div  class="quantity_dec quantity_control"  pattern="[0-9]{3}" @click="decQty(item)"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+                        <div class="quantity_inc quantity_control" pattern="[0-9]{3}" @click="incQty(item)"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+                        <div class="quantity_dec quantity_control" pattern="[0-9]{3}" @click="decQty(item)"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
                       </div>
                     </div>
                   </div>
@@ -167,6 +167,7 @@ export default {
   },
   computed: {
     ...mapGetters(['cart', 'cartTotal', 'shipping', 'shippingTotal', 'order']),
+
   },
   methods: {
     incQty(item) {
@@ -174,6 +175,9 @@ export default {
     },
     decQty(item) {
       this.$store.commit('decQty', item);
+    },
+    inputQty(item) {
+       this.$store.commit('inputQty', item);
     },
     removeFromCart(item) {
       this.$store.commit('removeFromCart', item);
@@ -724,6 +728,17 @@ export default {
         }
       }
     }
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
   }
 
   // Respon

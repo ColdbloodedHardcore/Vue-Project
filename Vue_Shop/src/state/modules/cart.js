@@ -49,7 +49,7 @@ const mutations = {
         if (found) {
             state.shippingTotal = ship.price;
             this.commit('saveCart');            
-        }                   
+        }                    
     },
     // Item quantity
     incQty(state, item) {
@@ -70,6 +70,26 @@ const mutations = {
             found.totalPrice = found.quantity * found.price;
         } 
         state.cartCount--;
+        this.commit('saveCart');
+    },
+    inputQty(state, item) {
+        let found = state.cart.find(product => product.id == item.id);
+        let res = 0;
+
+        if (found) {            
+            let input = document.querySelectorAll('input[type=number]');            
+
+            input.forEach(function (input) {
+                if (input.id == item.id) {    
+                    found.quantity = input.value;
+                    found.totalPrice = found.quantity * found.price;
+                }   
+                               
+                res += +input.value;
+            });
+        } 
+        
+        state.cartCount = res;
         this.commit('saveCart');
     },
 

@@ -55,12 +55,12 @@
 						<!-- Product Quantity -->
 						<div class="product_quantity_container">
 							<div class="product_quantity clearfix">
-								<span>Qty</span>
-								<input type="text" pattern="[0-9]*" value="0">
-								<div class="quantity_buttons">
-									<!-- <div class="quantity_inc quantity_control" @click="incQty()"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
-									<div  class="quantity_dec quantity_control" @click="decQty()"><i class="fa fa-chevron-down" aria-hidden="true"></i></div> -->
-								</div>
+								 <span>Qty</span>
+                                <!-- <input type="text" pattern="/[0-9]*" :value="item.quantity">
+                                <div class="quantity_buttons">
+                                    <div class="quantity_inc quantity_control"  pattern="[0-9]{3}" @click="incQty(item)"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+                                    <div  class="quantity_dec quantity_control"  pattern="[0-9]{3}" @click="decQty(item)"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+                                </div> -->
 							</div>
 							<div class="button cart_button"><a type="button" @click="addToCart(product)">Add to cart</a></div>
 						</div>
@@ -132,12 +132,12 @@ export default {
     addToCart(product) {
         this.$store.commit('addToCart', product);
     },
-    // incQty () {
-    //   this.$store.commit('incrementQty');      
+    // incQty(item) {
+    //   this.$store.commit('incQty', item);
     // },
-    // decQty () {
-    //   this.$store.commit('decrementQty')
-    // },    
+    // decQty(item) {
+    //   this.$store.commit('decQty', item);
+    // },  
   }
 }
 </script>
