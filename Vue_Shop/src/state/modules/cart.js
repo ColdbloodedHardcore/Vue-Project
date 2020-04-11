@@ -51,7 +51,9 @@ const mutations = {
             this.commit('saveCart');            
         }                    
     },
-    // Item quantity
+
+
+    // Item quantity 
     incQty(state, item) {
         let found = state.cart.find(product => product.id == item.id);
 
@@ -93,7 +95,8 @@ const mutations = {
         this.commit('saveCart');
     },
 
-    // Add to cart
+
+    // Add to cart 
     addToCart(state, item)  {
         let found = state.cart.find(product => product.id == item.id);
 

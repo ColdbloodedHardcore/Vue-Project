@@ -57,7 +57,8 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
 // Validate
-
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
 
 
 

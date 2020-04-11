@@ -143,19 +143,20 @@
 								<div class="order_list_value ml-auto">Total</div>
 							</div>
 							<ul class="order_list">
-								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="order_list_title">Cocktail Yellow dress</div>
-									<div class="order_list_value ml-auto">$59.90</div>
+								<li class="item d-flex flex-row align-items-center justify-content-start"
+                                    v-for="(item, index) in cart" :key="index">
+                                    <div class="order_list_title">{{ item.title }}</div>
+                                    <div class="order_list_value ml-auto">${{ item.price.toFixed(2) }}</div>                                                        
 								</li>
-								<li class="d-flex flex-row align-items-center justify-content-start">
+								<li class="subtotal d-flex flex-row align-items-center justify-content-start">
 									<div class="order_list_title">Subtotal</div>
 									<div class="order_list_value ml-auto">${{ cartTotal.toFixed(2) }}</div>
 								</li>
-								<li class="d-flex flex-row align-items-center justify-content-start">
+								<li class="shipping d-flex flex-row align-items-center justify-content-start">
 									<div class="order_list_title">Shipping</div>
 									<div class="order_list_value ml-auto">{{ shippingTotal.toFixed(2) }}</div>
 								</li>
-								<li class="d-flex flex-row align-items-center justify-content-start">
+								<li class="total d-flex flex-row align-items-center justify-content-start">
 									<div class="order_list_title">Total Order</div>
 									<div class="order_list_value ml-auto">$ {{ order.toFixed(2) }}</div>
 								</li>
@@ -422,7 +423,6 @@ export default {
                 }
             }
         }
-
         
         .order {
             width: 100%;
@@ -435,7 +435,7 @@ export default {
                 margin-top: 46px;
 
                 .order_list_bar {
-                    margin-bottom: 59px;
+                    margin-bottom: 50px;
                 }
                 .order_list_title,
                 .order_list_value {
@@ -445,8 +445,18 @@ export default {
                 }
 
                 .order_list {
-                    li:not(:last-child) {
-                        margin-bottom: 53px;
+                    .item {
+                        padding: 5px 0;
+                    }
+
+                    .subtotal, 
+                    .shipping,
+                    .total {
+                        margin-bottom: 20px;
+                    }
+
+                    .subtotal {
+                        margin-top: 50px;
                     }
                 }
             }
@@ -454,7 +464,7 @@ export default {
 
         .payment {
             &_options {
-                margin-top: 80px;
+                margin-top: 50px;
 
                 .payment_option {
                     display: block;

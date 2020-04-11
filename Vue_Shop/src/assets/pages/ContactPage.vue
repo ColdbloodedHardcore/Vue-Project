@@ -39,12 +39,14 @@
 									<div class="col-xl-6">
 										<!-- Name -->
 										<label for="contact_name">First Name*</label>
-										<input type="text" id="contact_name" class="contact_input" required="required">
+										<input v-model="$v.firstName.$model" :class="status($v.firstName)" 
+                                        type="text" id="contact_name" class="contact_input" required="required">
 									</div>
 									<div class="col-xl-6 last_name_col">
 										<!-- Last Name -->
 										<label for="contact_last_name">Last Name*</label>
-										<input type="text" id="contact_last_name" class="contact_input" required="required">
+										<input v-model="$v.lastName.$model" :class="status($v.lastName)" 
+                                        type="text" id="contact_last_name" class="contact_input" required="required">
 									</div>
 								</div>
 								<div>
@@ -54,7 +56,8 @@
 								</div>
 								<div>
 									<label for="contact_textarea">Message*</label>
-									<textarea id="contact_textarea" class="contact_input contact_textarea" required="required"></textarea>
+									<textarea v-model="$v.message.$model" :class="status($v.message)" 
+                                    id="contact_textarea" class="contact_input contact_textarea" required="required"></textarea>
 								</div>
 								<button class="button contact_button"><span>Send Message</span></button>
 							</form>
@@ -89,6 +92,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="row map_row">
 				<div class="col">
 
@@ -112,10 +116,33 @@
 </template>
 
 <script>
+import { required } from 'vuelidate/lib/validators';
+
 export default {
     data () {
         return {
-        
+            firstName: '',
+            lastName: '',
+            message: ''
+        }
+    },
+    validations: {
+        firstName: {
+            required,
+        },
+        lastName: {
+            required,
+        },
+        message: {
+            required,
+        }
+    },
+    methods: {
+        status(validation) {
+            return {
+                error: validation.$error,
+                dirty: validation.$dirty
+            }
         }
     }
 }
@@ -240,7 +267,7 @@ export default {
                     width: 100%;
                     height: 52px;
                     background: #f2f4f8;
-                    border: none;
+                    border: 1px solid transparent;
                     outline: none;
                     padding-left: 15px;
                 }
@@ -329,6 +356,23 @@ export default {
                 }
             }
         }
+    }
+
+    .dirty {
+        border-color: #5A5 !important;
+    }
+
+    .dirty:focus {
+        outline-color: #8E8 !important;
+    }
+
+    .error {
+        border-color: red !important;
+        background: #FDD;
+    }
+
+    .error:focus {
+        outline-color: #F99 !important;
     }
 </style>
 
